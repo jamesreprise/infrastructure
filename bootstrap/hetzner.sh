@@ -1,23 +1,18 @@
 #!/usr/bin/env bash
 
-# WORK IN PROGRESS - NON-FUNCTIONAL - DO NOT USE
-
-# Takes a Hetzner rescue server and creates a Primetime server running on NixOS.
+# Creates a server running NixOS from a Hetzner Rescue environment.
 #
 # Adapted from https://github.com/nix-community/nixos-install-scripts/blob/master/hosters/hetzner-dedicated/hetzner-dedicated-wipe-and-install-nixos.sh
-#
 # and https://mazzo.li/posts/hetzner-zfs.html
-#
 # and https://openzfs.github.io/openzfs-docs/Getting%20Started/NixOS/Root%20on%20ZFS/1-preparation.html
+# and https://gist.github.com/bitonic/78529d3dd007d779d60651db076a321a 
 #
-# using https://gist.github.com/bitonic/78529d3dd007d779d60651db076a321a 
 # Usage:
 # ssh root@YOUR_SERVERS_IP bash -s < hetzner.sh
 
 # Notes:
-# There's a lot of implicit actions in this script. We assume: 
-# * that there are four equally sized drives available at /dev/sd{a,b,c,d}.
-# * that you want to use ZFS.
+# There's a lot of implicit actions in this script. If you don't feel comfortable
+# unpicking this mess, unlucky.
 
 # Bash safety settings: 
 #
