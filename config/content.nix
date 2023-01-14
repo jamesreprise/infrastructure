@@ -7,6 +7,10 @@
   services.plex.openFirewall = true;
   users.users."${config.services.plex.user}".extraGroups = [ "deluge" "radarr" "sonarr" "unpackerr" ];
 
+  # Ombi
+  services.ombi.enable = true;
+  services.ombi.openFirewall = true;
+
   # Jackett
   services.jackett.enable = true;
 
@@ -47,10 +51,24 @@
     };
   };
 
-  # Deluge 
+  # Deluge
   services.deluge.declarative = true;
   services.deluge.enable = true;
   services.deluge.openFirewall = true;
+  
+  services.deluge.web.enable = true;
+
+  environment.etc."deluge/chmod.sh" = {
+    enable = true;
+    text = ''
+      #!/bin/bash
+      torrentid=$1
+      torrentname=$2
+      torrentpath=$3
+      chmod -R 770 "$torrentpath"
+    '';
+    mode = "0555";
+  };
 
   age.secrets.deluge = {
     file = ./secrets/deluge.age;
@@ -89,7 +107,4 @@
     upnp = false;
     lsd = false;
   };
-
-  # Deluge Web
-  services.deluge.web.enable = true; 
 }

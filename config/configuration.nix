@@ -11,12 +11,11 @@
 
   # Users
   users.mutableUsers = false;
-  users.users.root.openssh.authorizedKeys.keys = [ "" ];
   users.users.james = {
     isNormalUser = true;
     home = "/home/james";
     group = "james";
-    hashedPassword = "";
+    hashedPassword = "...";
     extraGroups = ["wheel"];
   };
   users.groups.james = {};
