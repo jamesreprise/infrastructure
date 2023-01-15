@@ -89,17 +89,20 @@
 
     enabled_plugins = [ "Execute" "Label" ];
 
-    max_active_seeding = "-1";
-    max_active_downloading = "-1";
-    max_active_limit = "-1";
+    max_active_seeding = -1;
+    max_active_downloading = -1;
+    max_active_limit = -1;
     stop_seed_at_ratio = false;
     remove_seed_at_ratio = false;
 
-    max_connections = "-1";
-    max_upload_speed = "-1.0";
-    max_download_speed = "-1.0";
-    max_upload_slots_global = "-1";
-    seed_time_limit = "-1";
+    max_connections_global = -1;
+    max_connections_per_torrent = -1;
+    max_connections_per_second = -1;
+    max_half_open_connections = -1;
+    max_upload_speed = -1.0;
+    max_download_speed = -1.0;
+    max_upload_slots_global = -1;
+    seed_time_limit = -1;
 
     dht = false;
     natpmp = false;
