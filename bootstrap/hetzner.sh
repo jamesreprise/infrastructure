@@ -13,6 +13,8 @@
 # Notes:
 # There's a lot of implicit actions in this script. If you don't feel comfortable
 # unpicking this mess, unlucky.
+# 
+# Also - be sure to replace the "..." hashed password (and rename the user james). 
 
 # Bash safety settings: 
 #
@@ -288,14 +290,11 @@ cat > /mnt/etc/nixos/configuration.nix << EOF
 
   # Users
   users.mutableUsers = false;
-  users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8fjbXSBBYlm7tO8Zn6AEPjBm63jTNdhSe9oCIp3ocADNEqG92a25OaVLCO5O9ZDNQCnzE2i4Y2TXxYnz95uHnReb7DXkbyAIdx71X91esW4zPtI4zLzpHB4Hlfy7vzcXA0CsQJ5cFl4jgjiHV2+73YQvULbt6fqvldNRhq4F3hc8tBlPThwz0tPugZO0hvhz4G1crt2gRgcvdvBUtYhmgwEPHR9MlVtms1Z6khVJVYJ3Dawcd/V+4gtaiTLUohmD98HM/Tt1RP2SAtTBQ5L6LiZz4Igs5PYbnv/w3yYNMLusSfVjTUV1Ch0NJC8uJM15Rwm9RBYGmrjopLGGuIby3EkFgBJnvPQzJ+3+20TWmh5QKCsWx7K2Fv54AGndUP0Tq3acwzECp2o86mokxgCQyppTu7OnUFRAm69iux8wYWWcnxfDpgDM9wEJPCQ3bZ0IT43uDU5HCFZNGLUiEQEFTgZoM6lLtYO76JRChn1rJtq1M87ZnuaxA08g7LZz7S7c="
-  ];
   users.users.james = {
     isNormalUser = true;
     home = "/home/james";
     group = "james";
-    hashedPassword = "\$6$//tchRyrimZs.vMU\$jyxsh1apQ5EVxltobG/umHBp3B7BHA/X3qJwoA1BRk6QB5fjYCK9dphkTVUCl78IacgHD/XLljCOLY4k.f1OG/";
+    hashedPassword = "...";
     extraGroups = ["wheel"];
   };
   users.groups.james = {};
