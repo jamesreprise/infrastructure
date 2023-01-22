@@ -36,5 +36,5 @@
   
 
   # System packages 
-  environment.systemPackages = [ pkgs.tmux pkgs.git (pkgs.callPackage <agenix/pkgs/agenix.nix> {}) ];
+  environment.systemPackages = [ pkgs.ncdu pkgs.htop pkgs.tmux pkgs.git (pkgs.callPackage <agenix/pkgs/agenix.nix> {}) ];
 }

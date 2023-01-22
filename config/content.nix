@@ -110,4 +110,6 @@
     upnp = false;
     lsd = false;
   };
+
+  users.users.james.extraGroups = ["deluge" "radarr" "sonarr" "unpackerr" "plex"];
 }
