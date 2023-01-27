@@ -85,10 +85,17 @@
     description = "james";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ 
-    firefox thunderbird filezilla mpv
-    vscode 
-    cargo rustc
+      gnupg
+      firefox thunderbird filezilla mpv
+      vscode 
+      cargo rustc
     ];
+  };
+
+
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
   };
 
   # Allow unfree packages
@@ -126,5 +133,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }
