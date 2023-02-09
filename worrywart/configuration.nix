@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ stagit.nix ];
+  imports = 
+    [ 
+      ./stagit.nix 
+    ];
 
   # Services
   services.openssh.permitRootLogin = "prohibit-password";

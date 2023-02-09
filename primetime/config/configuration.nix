@@ -3,7 +3,10 @@
 {
   imports =
     [
-      ./hardware-configuration.nix ./zfs.nix ./content.nix ./networking.nix
+      ./hardware-configuration.nix 
+      ./zfs.nix 
+      ./content.nix 
+      ./networking.nix
        <agenix/modules/age.nix>
     ];
 

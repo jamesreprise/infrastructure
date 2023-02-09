@@ -40,20 +40,7 @@ echo -e "#! /usr/bin/env bash\nset -e\n" 'parted $@ 2> parted-stderr.txt || grep
 ./parted-ignoring-partprobe-error.sh --script /dev/sd{a,b,c,d} mklabel gpt
 
 # Create partitions (--script to not ask)
-#
-# We create the 1MB BIOS boot partition at the front.
-#
-# Note we use "MB" instead of "MiB" because otherwise `--align optimal` has no effect;
-# as per documentation https://www.gnu.org/software/parted/manual/html_node/unit.html#unit:
-# > Note that as of parted-2.4, when you specify start and/or end values using IEC
-# > binary units like "MiB", "GiB", "TiB", etc., parted treats those values as exact
-#
-# Note: When using `mkpart` on GPT, as per
-#   https://www.gnu.org/software/parted/manual/html_node/mkpart.html#mkpart
-# the first argument to `mkpart` is not a `part-type`, but the GPT partition name:
-#   ... part-type is one of 'primary', 'extended' or 'logical', and may be specified only with 'msdos' or 'dvh' partition tables.
-#   A name must be specified for a 'gpt' partition table.
-# GPT partition names are limited to 36 UTF-16 chars, see https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_entries_(LBA_2-33).
+# Possibly replace with more modern tooling?
 ./parted-ignoring-partprobe-error.sh --script --align optimal /dev/sda -- mklabel gpt mkpart 'bios-boot-partition' 1MB 2MB set 1 bios_grub on mkpart 'zboot' 2MB 2000MB mkpart 'zroot' 2000MB '100%'
 ./parted-ignoring-partprobe-error.sh --script --align optimal /dev/sdb -- mklabel gpt mkpart 'bios-boot-partition' 1MB 2MB set 1 bios_grub on mkpart 'zboot' 2MB 2000MB mkpart 'zroot' 2000MB '100%'
 ./parted-ignoring-partprobe-error.sh --script --align optimal /dev/sdc -- mklabel gpt mkpart 'bios-boot-partition' 1MB 2MB set 1 bios_grub on mkpart 'zboot' 2MB 2000MB mkpart 'zroot' 2000MB '100%'

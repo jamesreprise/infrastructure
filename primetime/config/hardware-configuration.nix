@@ -5,8 +5,7 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+    [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = [ "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
