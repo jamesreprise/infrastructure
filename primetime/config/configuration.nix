@@ -3,7 +3,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix ./zfs.nix ./content.nix <agenix/modules/age.nix>
+      # hardware-configuration.nix is omitted as it is hardware-specific.
+      ./hardware-configuration.nix ./zfs.nix ./content.nix ./networking.nix
+       <agenix/modules/age.nix>
     ];
 
   # Services
@@ -36,5 +38,7 @@
   
 
   # System packages 
-  environment.systemPackages = [ pkgs.ncdu pkgs.htop pkgs.tmux pkgs.git (pkgs.callPackage <agenix/pkgs/agenix.nix> {}) ];
+  environment.systemPackages = with pkgs; [ 
+    ncdu htop tmux git (callPackage <agenix/pkgs/agenix.nix> {}) 
+  ];
 }
