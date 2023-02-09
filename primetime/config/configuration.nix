@@ -2,8 +2,7 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      # hardware-configuration.nix is omitted as it is hardware-specific.
+    [
       ./hardware-configuration.nix ./zfs.nix ./content.nix ./networking.nix
        <agenix/modules/age.nix>
     ];
@@ -23,7 +22,6 @@
   users.groups.james = {};
   services.openssh.enable = true;
 
-
   # Nix 
   nix.nixPath = [
     "nixpkgs=https://nixos.org/channels/nixpkgs-unstable"
@@ -36,7 +34,6 @@
   # should.
   system.stateVersion = "22.11"; 
   
-
   # System packages 
   environment.systemPackages = with pkgs; [ 
     ncdu htop tmux git (callPackage <agenix/pkgs/agenix.nix> {}) 
