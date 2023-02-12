@@ -12,6 +12,32 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # Networking
+  networking.hostId = "...";
+  networking.hostName = "primetime";
+  networking.useDHCP = false;
+  networking.interfaces."enp4s0".ipv4.addresses = [
+    {
+      address = "...";
+      # The prefix length is commonly, but not always, 24.
+      # You should check what the prefix length is for your server
+      # by inspecting the netmask in the "IPs" tab of the Hetzner UI.
+      # For example, a netmask of 255.255.255.0 means prefix length 24
+      # (24 leading 1s), and 255.255.255.192 means prefix length 26
+      # (26 leading 1s).
+      prefixLength = 26;
+    }
+  ];
+  networking.interfaces."enp4s0".ipv6.addresses = [
+    {
+      address = "...";
+      prefixLength = 64;
+    }
+  ];
+  networking.defaultGateway = "...";
+  networking.defaultGateway6 = { address = "fe80::1"; interface = "enp4s0"; };
+  networking.nameservers = [ "..." ];
+
   fileSystems."/" =
     { device = "zroot/main/root";
       fsType = "zfs"; options = [ "zfsutil" "X-mount.mkdir" ];

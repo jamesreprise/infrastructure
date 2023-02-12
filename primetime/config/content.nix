@@ -1,6 +1,23 @@
 { config, pkgs, lib, ... }:
 
 {
+  users.users.james.extraGroups = ["deluge" "radarr" "sonarr" "unpackerr" "plex"];
+
+  # Secrets
+  age.secrets.deluge = {
+    file = ./secrets/deluge.age;
+    mode = "500";
+    owner = "deluge";
+    group = "deluge";
+  };
+
+  age.secrets.unpackerr = {
+    file = ./secrets/unpackerr.age;
+    mode = "500";
+    owner = "unpackerr";
+    group = "unpackerr";
+  };
+
   # Plex
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "plexmediaserver" ];
   services.plex.enable = true;
@@ -30,13 +47,6 @@
     group = "unpackerr";
   };
   users.users.unpackerr.extraGroups = [ "deluge" "radarr" "sonarr" ];
-
-  age.secrets.unpackerr = {
-    file = ./secrets/unpackerr.age;
-    mode = "500";
-    owner = "unpackerr";
-    group = "unpackerr";
-  };
 
   systemd.services.unpackerr = {
     enable = true;
@@ -110,6 +120,4 @@
     upnp = false;
     lsd = false;
   };
-
-  users.users.james.extraGroups = ["deluge" "radarr" "sonarr" "unpackerr" "plex"];
 }

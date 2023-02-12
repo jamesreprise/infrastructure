@@ -5,8 +5,8 @@
     [
       ./hardware-configuration.nix 
       ./zfs.nix 
+      ./wireguard.nix
       ./content.nix 
-      ./networking.nix
        <agenix/modules/age.nix>
     ];
 
