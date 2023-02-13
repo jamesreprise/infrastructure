@@ -1,5 +1,18 @@
 { config, pkgs, ...}:
 
+# A corresponding client config looks like the following:
+# ```
+# [Interface]
+# PrivateKey = ...
+# Address = 10.0.0.2/32
+# DNS = 1.1.1.1, 1.0.0.1
+#
+# [Peer]
+# PublicKey = ...
+# AllowedIPs = 0.0.0.0/0
+# EndPoint = ...:51820
+# ```
+
 {
   age.secrets.wireguard = {
     file = ./secrets/wireguard.age;
