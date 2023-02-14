@@ -39,6 +39,6 @@
   
   # System packages 
   environment.systemPackages = with pkgs; [ 
-    ncdu htop tmux git (callPackage <agenix/pkgs/agenix.nix> {}) 
+    vim wget ncdu htop tmux git bind (callPackage <agenix/pkgs/agenix.nix> {}) 
   ];
 }

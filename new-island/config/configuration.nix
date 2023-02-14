@@ -104,7 +104,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim wget tmux htop ncdu git
+    vim wget tmux htop ncdu git bind
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
