@@ -1,0 +1,13 @@
+# Envvars
+export GPG_TTY=$(tty)
+
+# Aliases
+alias ls=exa
+alias vim=nvim
+alias cd=z
+alias rm=rm -f
+
+# Bindkeys
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+bindkey "^H" backward-kill-word
