@@ -1,4 +1,3 @@
-# For a 2015 MacBook Pro
 { config, pkgs, ... }:
 
 {
@@ -104,7 +103,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim wget tmux htop ncdu git bind
+    neovim wget tmux htop ncdu git bind
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

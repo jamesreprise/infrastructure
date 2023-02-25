@@ -3,13 +3,14 @@
   home.homeDirectory = "...";
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
+  programs.home-manager.path = "...";
 
   home.packages = with pkgs; [ bind ripgrep tig ];
 
   programs.git = {
     enable = true;
     includes = [{ path = "~/.config/nixpkgs/gitconfig"; }];
-    delta.enable = true;
+    diff-so-fancy.enable = true;
   };
 
   programs.zsh = {
@@ -33,7 +34,8 @@
       ];
       prompt = {
         theme = "redhat";
-        pwdLength = "long";
+        pwdLength = "full";
+        showReturnVal = true;
       };
     };
   };
@@ -44,6 +46,10 @@
   };
 
   programs.zoxide = {
+    enable = true;
+  };
+
+  programs.exa = {
     enable = true;
   };
 
