@@ -56,6 +56,10 @@
           publicKey = "pz5+c7AqEBualGXkVx3PWLjuj0eArmpBHSZ+MoIAujQ=";
           allowedIPs = [ "10.0.0.3/32" ];
         }
+        {
+          publicKey = "xwWHby+0cPhN+K4JQ4uVZELZzf58a2Py5YYt/FDT3Qw=";
+          allowedIPs = [ "10.0.0.4/32" ];
+        }
       ];
     };
   };

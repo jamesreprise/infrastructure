@@ -7,11 +7,11 @@
       ./zfs.nix 
       ./wireguard.nix
       ./content.nix 
-       <agenix/modules/age.nix>
+      <agenix/modules/age.nix>
     ];
 
   # Services
-  services.openssh.permitRootLogin = "prohibit-password";
+  services.openssh.settings.PermitRootLogin = "prohibit-password"; 
 
   # Users
   users.mutableUsers = false;
@@ -39,6 +39,6 @@
   
   # System packages 
   environment.systemPackages = with pkgs; [ 
-    vim wget ncdu htop tmux git bind (callPackage <agenix/pkgs/agenix.nix> {}) 
+    neovim wget ncdu htop tmux git bind wireguard-tools (callPackage <agenix/pkgs/agenix.nix> {}) 
   ];
 }
