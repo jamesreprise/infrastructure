@@ -1,5 +1,5 @@
 # Primetime
-Primetime is a content server written in Nix.
+Primetime is a content and media server. 
 
 ## bootstrap/
 We bootstrap our server to life from the Hetzner 'rescue' system. Several things
