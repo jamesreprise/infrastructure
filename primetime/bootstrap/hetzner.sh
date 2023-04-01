@@ -83,7 +83,8 @@ DISKS=$(ls /dev/disk/by-id/* | grep ata | grep -v part)
 zpool create \
     -o compatibility=grub2 \
     -o ashift=12 \
-    -o autotrim=on \
+    -o ashift=12 \
+    -o autoreplace=on \
     -O acltype=posixacl \
     -O canmount=off \
     -O compression=lz4 \
@@ -102,6 +103,7 @@ zpool create \
 zpool create \
     -o ashift=12 \
     -o autotrim=on \
+    -o autoreplace=on \
     -O acltype=posixacl \
     -O canmount=off \
     -O compression=zstd \
