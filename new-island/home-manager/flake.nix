@@ -1,4 +1,7 @@
-{
+let 
+  name = <name>
+  arch = <arch>
+in {
   description = "Home Manager config";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -8,13 +11,12 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ...}: let
-    arch = "..."; # x86_64-darwin for macOS, etc.
-  in {
+  outputs = { nixpkgs, home-manager, ...}:
+  {
     defaultPackage.${arch} =
       home-manager.defaultPackage.${arch};
-
-    homeConfigurations.james =
+    
+    homeConfigurations.name =
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${arch};
         modules = [ ./home.nix ];

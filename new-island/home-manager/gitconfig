@@ -1,0 +1,10 @@
+[user]
+	email = <email>
+	name = <name> 
+	signingkey = <gpg key> 
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[commit]
+	gpgsign = true

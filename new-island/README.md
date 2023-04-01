@@ -1,11 +1,10 @@
 # New Island
-New Island is a general development VM and laptop definition.
+New Island is configuration for mobile devices - mostly laptops.
 
-## /config/configuration.nix
-Configuration for the overall system.
+This happens in two parts, configuration/ and home-manager/.
+## configuration/
+configuration.nix and system configuration files using NixOS and nix-darwin.
 
-## /config/home-manager-config
-Home manager configuration using flakes. Easily hot-loaded onto other machines 
-that support using Nix as a package manager, such as a macOS machine.
-
-Also contains config files for neovim and zsh.
+## home-manager/
+This consists of standalone home manager configurations using flakes.
+Easily hot-loaded onto other machines that support using Nix as a package.
