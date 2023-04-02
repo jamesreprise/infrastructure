@@ -28,7 +28,9 @@ in
     JAVA_HOME = "${temurin_x86_64}";
   };
 
-  home.file.".gnupg/gpg-agent.conf".text = "pinentry-agent ${pkgs.pinentry-curses}";
+  home.file.".gnupg/gpg-agent.conf".text = ''
+    pinentry-program ${pkgs.pinentry-curses}/bin/pinentry-curses";
+  '';
 
   programs.git = {
     enable = true;
@@ -43,4 +45,6 @@ in
     vimdiffAlias = true;
     extraConfig = builtins.readFile ./vimrc;
   };
+
+  programs.direnv.enable = true;
 }
