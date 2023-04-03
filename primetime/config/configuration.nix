@@ -39,6 +39,6 @@
   
   # System packages 
   environment.systemPackages = with pkgs; [ 
-    neovim wget ncdu htop tmux git bind wireguard-tools (callPackage <agenix/pkgs/agenix.nix> {}) 
+    smartmontools neovim wget ncdu htop tmux git bind wireguard-tools (callPackage <agenix/pkgs/agenix.nix> {}) 
   ];
 }
