@@ -19,13 +19,18 @@ let
 in 
 {
   home.packages = with pkgs; [
-    gnupg pinentry-curses
+    tig bind magic-wormhole
+    gnupg pinentry-curses mkcert nss
     temurin_x86_64
-    bazelisk 
+    bazelisk gradle
+    terraform google-cloud-sdk
+    gh docker
+
+    rustup
   ] ++ scripts;
 
   home.sessionVariables = {
-    JAVA_HOME = "${temurin_x86_64}";
+    JAVA_HOME = "${temurin_x86_64}/Contents/Home";
   };
 
   home.file.".gnupg/gpg-agent.conf".text = ''
