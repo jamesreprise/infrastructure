@@ -13,7 +13,6 @@ in {
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    bind ripgrep tig
-    terraform magic-wormhole certbot
+    mpv
   ];
 }

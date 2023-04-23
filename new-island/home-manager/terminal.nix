@@ -2,22 +2,19 @@
 {
   programs.zsh = {
     enable = true;
-    initExtra = builtins.readFile ./zshrc;
+    initExtraFirst = builtins.readFile ./zshrc;
+    initExtra = ''
+    export OPENSSL_DIR="${pkgs.openssl.dev}"
+    export OPENSSL_LIB_DIR="${pkgs.openssl.out}/lib"
+    '';
     prezto = {
       enable = true;
       pmodules = [
-        "environment"
-        "terminal"
         "editor"
         "history"
-        "directory"
-        "spectrum"
-        "utility"
         "completion"
         "prompt"
-        "history-substring-search"
         "autosuggestions"
-        "git"
       ];
       prompt = {
         theme = "minimal";
@@ -25,6 +22,10 @@
         showReturnVal = true;
       };
     };
+  };
+
+  programs.starship = {
+    enable = true;
   };
 
   programs.fzf = {

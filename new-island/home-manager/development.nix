@@ -19,14 +19,18 @@ let
 in 
 {
   home.packages = with pkgs; [
-    tig bind magic-wormhole
+    tig bind magic-wormhole htop
+    ripgrep certbot
     gnupg pinentry-curses mkcert nss
     temurin_x86_64
-    bazelisk gradle
-    terraform google-cloud-sdk
-    gh docker
-
-    rustup
+    bazelisk bazel-buildtools gradle
+    terraform 
+    (google-cloud-sdk.withExtraComponents [
+      google-cloud-sdk.components.gke-gcloud-auth-plugin
+    ])
+    gh docker docker-machine argocd
+    rustup jq
+    nodejs-19_x nodePackages_latest.pnpm
   ] ++ scripts;
 
   home.sessionVariables = {
