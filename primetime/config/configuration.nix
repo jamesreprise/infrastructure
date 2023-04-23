@@ -38,7 +38,9 @@
   system.stateVersion = "22.11"; 
   
   # System packages 
-  environment.systemPackages = with pkgs; [ 
-    smartmontools neovim wget ncdu htop tmux git bind wireguard-tools (callPackage <agenix/pkgs/agenix.nix> {}) 
+  environment.systemPackages = with pkgs; [
+    yt-dlp
+    smartmontools neovim wget ncdu htop 
+    tmux git bind wireguard-tools (callPackage <agenix/pkgs/agenix.nix> {}) 
   ];
 }
