@@ -28,6 +28,13 @@
   services.ombi.enable = true;
   services.ombi.openFirewall = true;
 
+  # Overseerr
+  virtualisation.oci-containers.containers."overseerr" = {
+    image = "sctx/overseerr:latest";
+    ports = [ "5055:5055" ];
+    volumes = [ "/opt/overseerr/config:/app/config" ];
+  };
+
   # Jackett
   services.jackett.enable = true;
 

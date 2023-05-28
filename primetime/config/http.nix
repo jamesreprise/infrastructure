@@ -9,6 +9,9 @@
 
     services.nginx.virtualHosts."primetime.james.gg" = {
         root = "/var/www/primetime";
+        # locations."/" = {
+        #   proxyPass = "http://localhost:port";
+        # };
     };
 
     networking.firewall = {

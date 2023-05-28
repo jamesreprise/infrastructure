@@ -41,6 +41,7 @@
   environment.systemPackages = with pkgs; [
     yt-dlp
     smartmontools neovim wget ncdu htop 
-    tmux git bind wireguard-tools (callPackage <agenix/pkgs/agenix.nix> {}) 
+    tmux git bind wireguard-tools ripgrep
+    (callPackage <agenix/pkgs/agenix.nix> {}) 
   ];
 }
