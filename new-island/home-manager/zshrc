@@ -9,6 +9,8 @@ export REPO_VATICLE_PASSWORD=...
 export ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
 export ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
 
+# Gcloud
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # Aliases
 alias ls=exa
 alias vim=nvim
