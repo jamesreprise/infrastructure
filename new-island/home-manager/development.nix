@@ -19,22 +19,31 @@ let
 in 
 {
   home.packages = with pkgs; [
-    tig bind magic-wormhole htop tmux nmap mtr
-    ncdu k9s
-    ripgrep certbot
-    gnupg pinentry-curses mkcert nss
-    temurin_x86_64
-    bazelisk bazel-buildtools gradle maven
-    terraform
-    (google-cloud-sdk.withExtraComponents [
+    # Networking
+    bind magic-wormhole nmap mtr
+    # Sysadmin
+    ncdu htop tmux ripgrep jq upx
+    # Cryptography
+    certbot pinentry-curses gnupg mkcert nss cfssl
+    # Git/VCS
+    tig gh
+    # Cloud
+    k9s terraform docker docker-machine argocd kubernetes-helm
+    awscli2 (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
-    ]) cfssl
-    gh docker docker-machine argocd
-    rustup jq upx
-    hatch
+    ]) 
+    cmctl
+    # Build systems
+    bazelisk bazel-buildtools gradle maven hatch rustup
+    # JS
     nodejs_20 nodePackages_latest.pnpm
     nodePackages."@angular/cli"
+    # Clojure
     clojure babashka
+    # LaTeX
+    (texlive.combine {
+      inherit (texlive) scheme-full kpfonts fontspec titlesec enumitem changepage;
+    })
     mpv
   ] ++ scripts;
 
