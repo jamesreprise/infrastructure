@@ -68,6 +68,4 @@ in
     vimdiffAlias = true;
     extraConfig = builtins.readFile ./vimrc;
   };
-
-  programs.direnv.enable = true;
 }
