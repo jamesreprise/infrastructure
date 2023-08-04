@@ -17,15 +17,11 @@
         "autosuggestions"
       ];
       prompt = {
-        theme = "minimal";
+        theme = "powerlevel10k";
         pwdLength = "full";
         showReturnVal = true;
       };
     };
-  };
-
-  programs.starship = {
-    enable = true;
   };
 
   programs.fzf = {
@@ -40,4 +36,7 @@
   programs.exa = {
     enable = true;
   };
+
+  programs.direnv.enable = true;
 }
+
