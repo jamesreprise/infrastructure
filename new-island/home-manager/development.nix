@@ -44,7 +44,6 @@ in
     (texlive.combine {
       inherit (texlive) scheme-full kpfonts fontspec titlesec enumitem changepage;
     })
-    mpv
   ] ++ scripts;
 
   home.sessionVariables = {

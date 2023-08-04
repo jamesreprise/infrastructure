@@ -17,4 +17,5 @@ alias vim=nvim
 alias cd=z
 # Don't like it? Come kill me. 
 alias nano=nvim
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
