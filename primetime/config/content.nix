@@ -7,8 +7,8 @@
   age.secrets.deluge = {
     file = ./secrets/deluge.age;
     mode = "500";
-    owner = "deluge";
-    group = "deluge";
+    owner = config.services.deluge.user;
+    group = config.services.deluge.group;
   };
 
   age.secrets.unpackerr = {
@@ -18,15 +18,17 @@
     group = "unpackerr";
   };
 
-  # Plex
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "plexmediaserver" ];
-  services.plex.enable = true;
-  services.plex.openFirewall = true;
-  users.users."${config.services.plex.user}".extraGroups = [ "deluge" "radarr" "sonarr" "unpackerr" ];
+  # Jellyfin
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Ombi
-  services.ombi.enable = true;
-  services.ombi.openFirewall = true;
+  services.ombi = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Overseerr
   virtualisation.oci-containers.containers."overseerr" = {
@@ -52,9 +54,9 @@
   users.users.unpackerr = {
     isSystemUser = true;
     group = "unpackerr";
+    extraGroups = [ "deluge" "radarr" "sonarr" ];
   };
-  users.users.unpackerr.extraGroups = [ "deluge" "radarr" "sonarr" ];
-
+  
   systemd.services.unpackerr = {
     enable = true;
     description = "unpackerr service for Radarr and Sonarr";
@@ -69,11 +71,47 @@
   };
 
   # Deluge
-  services.deluge.declarative = true;
-  services.deluge.enable = true;
-  services.deluge.openFirewall = true;
-  
-  services.deluge.web.enable = true;
+  services.deluge = {
+    enable = true;
+    openFirewall = true;
+    web = {
+        enable = true;
+    };
+        
+    authFile = config.age.secrets.deluge.path;
+    config = {
+        allow_remote = true;
+
+        download_location = "/opt/downloads/downloading";
+        move_completed = true;
+        move_completed_path = "/opt/downloads/complete";
+        copy_torrent_file = true;
+        torrentfiles_location = "/opt/downloads/torrent_files";
+
+        enabled_plugins = [ "Execute" "Label" ];
+
+        max_active_seeding = -1;
+        max_active_downloading = -1;
+        max_active_limit = -1;
+        stop_seed_at_ratio = false;
+        remove_seed_at_ratio = false;
+
+        max_connections_global = -1;
+        max_connections_per_torrent = -1;
+        max_connections_per_second = -1;
+        max_half_open_connections = -1;
+        max_upload_speed = -1.0;
+        max_download_speed = -1.0;
+        max_upload_slots_global = -1;
+        seed_time_limit = -1;
+
+        dht = false;
+        natpmp = false;
+        utpex = false;
+        upnp = false;
+        lsd = false;
+    };
+  };
 
   environment.etc."deluge/chmod.sh" = {
     enable = true;
@@ -85,46 +123,5 @@
       chmod -R 770 "$torrentpath"
     '';
     mode = "0555";
-  };
-
-  age.secrets.deluge = {
-    file = ./secrets/deluge.age;
-    mode = "500";
-    owner = config.services.deluge.user;
-    group = config.services.deluge.group;
-  };
-
-  services.deluge.authFile = config.age.secrets.deluge.path;
-  services.deluge.config = {
-    allow_remote = true;
-
-    download_location = "/opt/downloads/downloading";
-    move_completed = true;
-    move_completed_path = "/opt/downloads/complete";
-    copy_torrent_file = true;
-    torrentfiles_location = "/opt/downloads/torrent_files";
-
-    enabled_plugins = [ "Execute" "Label" ];
-
-    max_active_seeding = -1;
-    max_active_downloading = -1;
-    max_active_limit = -1;
-    stop_seed_at_ratio = false;
-    remove_seed_at_ratio = false;
-
-    max_connections_global = -1;
-    max_connections_per_torrent = -1;
-    max_connections_per_second = -1;
-    max_half_open_connections = -1;
-    max_upload_speed = -1.0;
-    max_download_speed = -1.0;
-    max_upload_slots_global = -1;
-    seed_time_limit = -1;
-
-    dht = false;
-    natpmp = false;
-    utpex = false;
-    upnp = false;
-    lsd = false;
   };
 }
