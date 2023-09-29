@@ -9,13 +9,6 @@ let
   
   scripts = [ bazel_sym_link ];
 
-  temurin_x86_64 = pkgs.temurin-bin-11.overrideAttrs (finalAttrs: previousAttrs: { 
-    src = builtins.fetchurl { 
-      url = "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.17%2B8/OpenJDK11U-jdk_x64_mac_hotspot_11.0.17_8.tar.gz";
-      sha256 = "f408a12f10d93b3205bef851af62707531b699963cef79408d59197d08763c94"; 
-    };
-  });
-
 in 
 {
   home.packages = with pkgs; [
@@ -33,13 +26,18 @@ in
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ]) 
     cmctl
+    minikube
     # Build systems
     bazelisk bazel-buildtools gradle maven hatch rustup
+    # Java
+    jdk17
     # JS
     nodejs_20 nodePackages_latest.pnpm
     nodePackages."@angular/cli"
     # Clojure
     clojure babashka
+    # Python
+    python310Full
     # LaTeX
     (texlive.combine {
       inherit (texlive) scheme-full kpfonts fontspec titlesec enumitem changepage;
@@ -47,7 +45,7 @@ in
   ] ++ scripts;
 
   home.sessionVariables = {
-    JAVA_HOME = "${temurin_x86_64}/Contents/Home";
+    JAVA_HOME = "${pkgs.jdk17}";
   };
 
   home.file.".gnupg/gpg-agent.conf".text = ''
