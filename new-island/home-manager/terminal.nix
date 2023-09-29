@@ -33,8 +33,14 @@
     enable = true;
   };
 
-  programs.exa = {
+  programs.lsd = {
     enable = true;
+    enableAliases = true;
+    settings = {
+        icons = {
+            when = "never";
+        };
+    };
   };
 
   programs.direnv.enable = true;
