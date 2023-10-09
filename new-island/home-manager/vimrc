@@ -9,4 +9,6 @@ set expandtab
 set colorcolumn=80
 set hidden
 set t_Co=256
+nnoremap <Space> i
+inoremap <S-Space> <Esc>
 
