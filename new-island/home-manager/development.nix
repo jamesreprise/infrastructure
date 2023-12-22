@@ -13,20 +13,25 @@ in
 {
   home.packages = with pkgs; [
     # Networking
-    bind magic-wormhole nmap mtr
+    bind magic-wormhole nmap mtr websocat
     # Sysadmin
-    ncdu htop tmux ripgrep jq upx
+    ncdu htop tmux ripgrep jq upx diffoscopeMinimal
     # Cryptography
-    certbot pinentry-curses gnupg mkcert nss cfssl
+    certbot-full pinentry-curses gnupg mkcert nss cfssl
     # Git/VCS
     tig gh
     # Cloud
-    k9s terraform docker docker-machine argocd kubernetes-helm
+    kubectl k9s terraform docker docker-machine argocd kubernetes-helm
     awscli2 (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ]) 
-    cmctl
+    gcsfuse
+    nodePackages_latest.firebase-tools
+    cmctl 
     minikube
+    kubeconform
+    # Protobuf
+    protobuf
     # Build systems
     bazelisk bazel-buildtools gradle maven hatch rustup
     # Java
@@ -42,6 +47,8 @@ in
     (texlive.combine {
       inherit (texlive) scheme-full kpfonts fontspec titlesec enumitem changepage;
     })
+    # Misc  
+    mpv imagemagick
   ] ++ scripts;
 
   home.sessionVariables = {
