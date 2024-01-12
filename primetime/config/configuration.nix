@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix 
       ./zfs.nix 
+      ./mail.nix
       ./wireguard.nix
       ./content.nix 
       <agenix/modules/age.nix>
@@ -44,4 +45,6 @@
     tmux git bind wireguard-tools ripgrep
     (callPackage <agenix/pkgs/agenix.nix> {}) 
   ];
+
+  environment.interactiveShellInit = "mail";
 }

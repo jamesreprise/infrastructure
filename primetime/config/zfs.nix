@@ -15,4 +15,18 @@
   ];
   boot.zfs.extraPools = ["zboot"];
   services.zfs.autoScrub.enable = true;
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    zfsStable = pkgs.zfsStable.override { enableMail = true; };
+  };
+
+  services.zfs.zed.enableMail = true;
+  services.zfs.zed.settings = {
+    ZED_EMAIL_PROG = "${pkgs.mailutils}/bin/mail";
+    ZED_EMAIL_ADDR = [ "james" ];
+    ZED_EMAIL_OPTS = "-s '@SUBJECT@' @ADDRESS@";
+
+    ZED_NOTIFY_INTERVAL_SECS = 3600;
+  };
 }
+
