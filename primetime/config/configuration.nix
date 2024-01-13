@@ -46,5 +46,5 @@
     (callPackage <agenix/pkgs/agenix.nix> {}) 
   ];
 
-  environment.interactiveShellInit = "mail";
+  environment.interactiveShellInit = "echo p | mail";
 }
