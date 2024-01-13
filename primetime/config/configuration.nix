@@ -40,6 +40,7 @@
   
   # System packages 
   environment.systemPackages = with pkgs; [
+    openssl pkg-config
     yt-dlp
     smartmontools neovim wget ncdu htop 
     tmux git bind wireguard-tools ripgrep
