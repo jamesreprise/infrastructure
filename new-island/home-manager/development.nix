@@ -70,6 +70,40 @@ in
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraConfig = builtins.readFile ./vimrc;
+    defaultEditor = true;
+    extraConfig = ''
+        set ignorecase
+        set background=dark
+        set number
+        set mouse=a
+        set tabstop=4
+        set shiftwidth=4
+        set softtabstop=4
+        set expandtab
+        set hidden
+        set t_Co=256
+        nnoremap <Space> i
+        inoremap <S-Space> <Esc>
+
+        colorscheme gruvbox
+        highlight NormalFloat ctermbg=black guibg=black
+
+        let g:deoplete#enable_at_startup = 1
+        call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
+        set completeopt-=preview
+
+        let g:float_preview#docked = 0
+        let g:float_preview#max_width = 80
+        let g:float_preview#max_height = 40
+    '';
+
+    plugins = with pkgs.vimPlugins; [
+      vim-dispatch vim-jack-in conjure
+      deoplete-nvim
+      float-preview-nvim
+      vim-easymotion
+      vim-repeat vim-surround vim-sexp vim-sexp-mappings-for-regular-people
+      gruvbox
+    ];
   };
 }
