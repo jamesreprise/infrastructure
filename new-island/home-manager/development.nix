@@ -85,6 +85,9 @@ in
         nnoremap <Space> i
         inoremap <S-Space> <Esc>
 
+        let mapleader = ","
+        let maplocalleader = ","
+
         colorscheme gruvbox
         highlight NormalFloat ctermbg=black guibg=black
 
@@ -98,10 +101,11 @@ in
     '';
 
     plugins = with pkgs.vimPlugins; [
-      vim-dispatch vim-jack-in conjure
+      fzf-vim
       deoplete-nvim
       float-preview-nvim
       vim-easymotion
+      vim-dispatch vim-jack-in conjure
       vim-repeat vim-surround vim-sexp vim-sexp-mappings-for-regular-people
       gruvbox
     ];
