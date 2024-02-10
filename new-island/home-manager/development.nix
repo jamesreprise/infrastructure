@@ -40,7 +40,7 @@ in
     nodejs_20 nodePackages_latest.pnpm
     nodePackages."@angular/cli"
     # Clojure
-    clojure babashka
+    clojure babashka clj-kondo joker
     # Python
     python310Full
     # LaTeX
@@ -48,7 +48,7 @@ in
       inherit (texlive) scheme-full kpfonts fontspec titlesec enumitem changepage;
     })
     # Misc  
-    mpv imagemagick
+    file mpv imagemagick
   ] ++ scripts;
 
   home.sessionVariables = {
@@ -98,13 +98,39 @@ in
         let g:float_preview#docked = 0
         let g:float_preview#max_width = 80
         let g:float_preview#max_height = 40
+
+        let g:ale_linters = { 'clojure': ['clj-kondo', 'joker'] }
     '';
 
     plugins = with pkgs.vimPlugins; [
+      # General
       fzf-vim
       deoplete-nvim
       float-preview-nvim
       vim-easymotion
+      {
+        plugin = conform-nvim;
+        type = "lua";
+        config = ''
+        require("conform").setup({
+          formatters_by_ft = {
+            clojure = { "joker" },
+          },
+          format_on_save = {
+            timeout_ms = 500,
+            lsp_fallback = false,
+          },
+        })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = "*",
+          callback = function(args)
+            require("conform").format({ bufnr = args.buf})
+          end,
+        })
+        '';
+      }
+      # Clojure
+      ale
       vim-dispatch vim-jack-in conjure
       vim-repeat vim-surround vim-sexp vim-sexp-mappings-for-regular-people
       gruvbox
