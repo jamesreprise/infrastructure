@@ -24,7 +24,7 @@ in
     kubectl k9s terraform docker docker-machine argocd kubernetes-helm
     awscli2 (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.gke-gcloud-auth-plugin
-    ]) 
+    ]) azure-cli
     gcsfuse
     nodePackages_latest.firebase-tools
     cmctl 
