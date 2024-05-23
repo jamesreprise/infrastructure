@@ -1,14 +1,14 @@
 # Infrastructure
 Collection of machines defined with nix.
-
-## Primetime
+## Machines
+### Primetime
 Content & media server.
 
-## New Island
-General development VM & laptop machine.
+### Mind
+Development machine.
 
-## Worrywart
-Portfolio server.
+## Todo
+- [ ] Create a unified configuration.
 
 ## Notes
 * We use [agenix](https://github.com/ryantm/agenix) for secret encryption.
