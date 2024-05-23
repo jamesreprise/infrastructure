@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, osConfig, ... }:
 
 let
-  name = "james"; # TODO: avoid restating this
+  name = osConfig.username;
 in
 {
   # Don't change.
