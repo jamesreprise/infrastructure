@@ -34,4 +34,12 @@ in
     enableKeyMapping = true;
     remapCapsLockToControl = true;
   };
+
+  homebrew = {
+    enable = true;
+    casks = [
+      "iterm2"
+      "keepassxc"
+    ];
+  };
 }
