@@ -73,6 +73,8 @@ in
     };
   };
 
+  # Check out nixvim if it's not easy to get everything done
+  # e.g. LSPs, Conjure
   programs.neovim = {
     enable = true;
     vimdiffAlias = true;
