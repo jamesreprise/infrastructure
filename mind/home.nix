@@ -19,7 +19,11 @@ in
 
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      set -x GPG_TTY (tty)
+    '';
     functions = {
+      # Disable login greeting.
       fish_greeting = {
         body = "";
       };
@@ -33,7 +37,7 @@ in
   };
 
   home.file.".gnupg/gpg-agent.conf".text = ''
-    pinentry-program ${pkgs.pinentry-curses}/bin/pinentry-curses;
+    pinentry-program ${pkgs.pinentry-curses}/bin/pinentry-curses
   '';
 
   # TODO: Move config up into flake.

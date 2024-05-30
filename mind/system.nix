@@ -39,7 +39,11 @@ in
     enable = true;
     casks = [
       "iterm2"
+      "firefox"
       "keepassxc"
+      "spotify"
+      "raycast"
+      "syncthing"
     ];
   };
 }
