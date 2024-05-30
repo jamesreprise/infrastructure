@@ -24,8 +24,14 @@
   outputs = inputs@{ self, nixpkgs, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask, home-manager }:
   let
     name = "james";
+    fullName = "James Williams";
+    email = "james@berserksystems.com";
     system = "MIND";
-    options = import ./options.nix { defaultUsername = name; };
+    options = import ./options.nix { 
+      defaultUsername = name;
+      defaultFullName = fullName;
+      defaultEmail = email;
+    };
     systemConfiguration = import ./system.nix { flake = self; };
   in
   {

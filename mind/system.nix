@@ -30,9 +30,16 @@ in
   # Otherwise our home points to /var/empty (https://github.com/LnL7/nix-darwin/issues/423)
   users.users.${name}.home = "/Users/${name}";
 
-  system.keyboard = {
-    enableKeyMapping = true;
-    remapCapsLockToControl = true;
+  system = {
+    defaults = {
+      ".GlobalPreferences" = {
+        "com.apple.sound.beep.sound" = "/System/Library/Sounds/Frog.aiff";
+      };
+    };
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
   };
 
   homebrew = {
@@ -42,6 +49,7 @@ in
       "firefox"
       "keepassxc"
       "spotify"
+      "whatsapp"
       "raycast"
       "syncthing"
     ];
