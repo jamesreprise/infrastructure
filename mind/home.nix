@@ -21,6 +21,13 @@ in
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
+      # Show full directory paths
+      set fish_prompt_pwd_dir_length 0
+
+      # Git signs
+      set -g __fish_git_prompt_showcolorhints true
+      set -g __fish_git_prompt_showdirtystate true
+      set -g __fish_git_prompt_showuntrackedfiles true
       # Required for pinentry-curses & GPG
       set -x GPG_TTY (tty)
     '';
