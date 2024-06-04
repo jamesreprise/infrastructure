@@ -1,9 +1,12 @@
-{ pkgs, osConfig, ... }:
+{ flake }:
+{ osConfig, pkgs, ... }:
 
 let
   name = osConfig.username;
 in
 {
+  imports = [ flake.inputs.nixvim.homeManagerModules.nixvim ];
+
   # Don't change.
   home.stateVersion = "23.11";
 
@@ -72,7 +75,6 @@ in
     pinentry-program ${pkgs.pinentry-curses}/bin/pinentry-curses
   '';
 
-  # TODO: Move config up into flake.
   programs.git = {
     enable = true;
     userName = osConfig.fullName;
@@ -92,110 +94,40 @@ in
     };
   };
 
-  # Check out nixvim if it's not easy to get everything done
-  # e.g. LSPs, Conjure
-  programs.neovim = {
+  programs.nixvim = {
     enable = true;
-    vimdiffAlias = true;
     defaultEditor = true;
-    
-    extraConfig = ''
-      set ignorecase
-      set background=dark
-      set number
-      set mouse=a
-      set tabstop=4
-      set shiftwidth=4
-      set softtabstop=4
-      set expandtab
-      set hidden
-      set wrap
-      set t_Co=256
+    viAlias = true;
+    vimAlias = true;
+
+    colorschemes.gruvbox.enable = true;
+
+    globals = {
+      mapleader = " ";
+      maplocalleader = ",";
+    };
+
+    opts = {
+      number = true;
+      ignorecase = true;
+      background = "dark";
+      shiftwidth = 4;
+    };
+
+    plugins = {
+      treesitter.enable = true;
+      nix.enable = true;
+      conjure.enable = true;
       
-      let mapleader = ","
-      let maplocalleader = ","
-    '';
+      lsp = {
+        enable = true;
+        servers = {
+	  nil-ls.enable = true;
+	  clojure-lsp.enable = true;
+	};
+      };
+    };
 
-    plugins = with pkgs.vimPlugins; [
-      { 
-        plugin = gruvbox-nvim;
-        type = "lua";
-        config = '' 
-          require('gruvbox').setup({
-            overrides = {
-              SignColumn = {bg = "#282828"}
-            }
-          })
-          vim.cmd("colorscheme gruvbox")
-        ''; 
-      }
-
-      plenary-nvim
-      {
-        plugin = telescope-nvim;
-        type = "lua";
-        config = ''
-          local builtin = require('telescope.builtin')
-          vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-          vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-          vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-          vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-        '';
-      }
-      {
-        plugin = toggleterm-nvim;
-        type = "lua";
-        config = ''
-          require('toggleterm').setup()
-        '';
-      }
-      { 
-        plugin = autosave-nvim;
-        type = "lua";
-        config = ''
-          require('autosave').setup({})
-        '';
-      }
-      { 
-        plugin = gitsigns-nvim;
-        type = "lua";
-        config = ''
-          require('gitsigns').setup()
-        '';
-      }
-      {
-        plugin = lazygit-nvim;
-        type = "lua";
-        config = ''
-          vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<CR>')
-        '';
-      }
-      mason-nvim
-      mason-lspconfig-nvim
-      nvim-lspconfig
-      {
-        plugin = nvim-treesitter.withAllGrammars;
-        type = "lua";
-        config = ''
-          require('nvim-treesitter.configs').setup({
-            highlight = {
-              enable = true,
-              additional_vim_regex_highlighting = false,
-            }
-          })
-        '';
-      }
-      playground
-      nvim-treesitter-textobjects
-
-      nerdtree
-      nerdtree-git-plugin
-
-      vim-airline
-      vim-airline-themes
-      vim-nix
-      vim-fugitive
-    ];   
   };
 
   programs.mpv.enable = true;
