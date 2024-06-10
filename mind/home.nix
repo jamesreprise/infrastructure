@@ -138,11 +138,18 @@ in
       };
     };
 
+    # TODO: Move plugins out into their own files - allows for grouping with keymaps
     plugins = {
       treesitter.enable = true;
       auto-save.enable = true;
 
-      telescope.enable = true;
+      telescope = {
+        enable = true;
+        settings = {
+          pickers.find_files.disable_devicons = true;
+        };
+      };
+
       lazygit.enable = true;
       toggleterm.enable = true;
       neo-tree = {
@@ -152,11 +159,68 @@ in
 
         defaultComponentConfigs = {
           icon = {
-            default = "*";
             folderClosed = ">";
             folderEmpty = "≥";
             folderOpen = "v";
+            folderEmptyOpen = "v";
           };
+          diagnostics = {
+            symbols = {
+              hint = "H";
+              info = "I";
+              warn = "!";
+              error = "X";
+            };
+            highlights = {
+              hint = "DiagnosticSignHint";
+              info = "DiagnosticSignInfo";
+              warn = "DiagnosticSignWarn";
+              error = "DiagnosticSignError";
+            };
+          };
+          gitStatus.symbols = {
+            added = "+";
+            deleted = "-";
+            modified = "~";
+            conflict = "x";
+            renamed = "r";
+            untracked = "U";
+            ignored = "i";
+            unstaged = "u";
+            staged = "s";
+          };
+        };
+
+        renderers = {
+          directory = [ 
+            "indent"
+            "icon"
+            "current_filter"
+            {
+              name = "container";
+              content = [
+                { name = "name"; zindex = 10; }
+                { name = "clipboard"; zindex = 10; }
+                { name = "diagnostics"; errors_only = true; zindex = 20; align = "right"; hide_when_expanded = true; }
+                { name = "git_status"; zindex = 20; align = "right"; hide_when_expanded = true; }
+              ];
+            }
+          ];
+          file = [
+            "indent"
+            {
+              name = "container";
+              content = [
+                { name = "name"; zindex = 10; }
+                { name = "clipboard"; zindex = 10; }
+                { name = "bufnr"; zindex = 10; }
+                { name = "modified"; zindex = 20; align = "right"; }
+                { name = "diagnostics"; zindex = 20; align = "right"; }
+                { name = "git_status"; zindex = 20; align = "right"; }
+              ];
+            }
+          ];
+          terminal = [ "indent" "name" "bufnr" ];
         };
       };
 
@@ -169,7 +233,10 @@ in
 
       notify.enable = true;
 
-      todo-comments.enable = true;
+      todo-comments = {
+        enable = true;
+        signs = false;
+      };
 
       nix.enable = true;
       conjure.enable = true;
