@@ -190,6 +190,24 @@ in
       };
     };
 
+    keymaps = [
+      {
+        mode = ["n"];
+        action = "<cmd>Telescope<CR>";
+        key = "<C-f>";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>Neotree<CR>";
+        key = "<C-e>";
+      }
+      {
+        mode = ["n" "t"];
+        action = "<cmd>ToggleTerm<CR>";
+        key = "<C-q>";
+      }
+    ];
+
     extraPlugins = with pkgs.vimPlugins; [
       vim-surround
       vim-sexp
