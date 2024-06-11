@@ -35,6 +35,12 @@ in
       ".GlobalPreferences" = {
         "com.apple.sound.beep.sound" = "/System/Library/Sounds/Frog.aiff";
       };
+      NSGlobalDomain = {
+        "com.apple.sound.beep.volume" = 0.4723665;
+      };
+      loginwindow = {
+        SHOWFULLNAME = true;
+      };
     };
     keyboard = {
       enableKeyMapping = true;

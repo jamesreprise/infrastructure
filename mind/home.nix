@@ -118,7 +118,7 @@ in
     vimAlias = true;
 
     globals = {
-      mapleader = ",";
+      mapleader = ";";
       maplocalleader = ",";
     };
 
@@ -224,14 +224,27 @@ in
         };
       };
 
-      which-key.enable = true;
+      which-key = {
+        enable = true;
+        triggers = "auto";
+      };
       gitsigns.enable = true;
       lightline = {
         enable = true;
         colorscheme = "wombat";
       };
 
-      notify.enable = true;
+      notify = {
+        enable = true;
+        fps = 60;
+        icons = {
+          debug = "D";
+          error = "E";
+          info = "I";
+          trace = "T";
+          warn = "W";
+        };
+      };
 
       todo-comments = {
         enable = true;
