@@ -16,6 +16,8 @@ in
   home.packages = with pkgs; [ 
     pinentry-curses
     termscp
+    clj-kondo
+    clojure
   ];
 
   # Let Home Manager install and manage itself.
@@ -141,6 +143,42 @@ in
     # TODO: Move plugins out into their own files - allows for grouping with keymaps
     plugins = {
       treesitter.enable = true;
+      treesitter-context.enable = true;
+      treesitter-refactor = {
+        enable = true;
+        highlightDefinitions = {
+          enable = true;
+          clearOnCursorMove = true;
+        };
+        highlightCurrentScope = {
+          enable = true;
+          disable = ["nix"];
+        };
+        navigation.enable = true;
+      };
+      cmp-buffer.enable = true;
+      cmp-path.enable = true;
+      cmp_luasnip.enable = true;
+      cmp-nvim-lsp.enable = true;
+      cmp-nvim-lsp-signature-help.enable = true;
+      cmp-nvim-lua.enable = true;
+      cmp = {
+        enable = true;
+        autoEnableSources = true;
+        settings = {
+          sources = [
+            { name = "nvim_lsp"; }
+          ];
+          mapping = {
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-u>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-d>" = "cmp.mapping.scroll_docs(4)";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+          };
+        };
+      };
       auto-save.enable = true;
 
       telescope = {
@@ -259,7 +297,7 @@ in
         servers = {
 	  nil-ls.enable = true;
 	  clojure-lsp.enable = true;
-	};
+        };
       };
 
       lint = { 
@@ -292,7 +330,16 @@ in
       vim-surround
       vim-sexp
       vim-sexp-mappings-for-regular-people
+      vim-easymotion
+      playground # treesitter-playground
     ];
+
+    extraConfigLua = ''
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      require('lspconfig')['clojure_lsp'].setup {
+        capabilities = capabilities
+      }
+    '';
   };
 
   programs.mpv.enable = true;
