@@ -18,15 +18,17 @@ in
     termscp
     clj-kondo
     clojure
-    jdk17
+    jdk21
   ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true; 
 
+  # WARN: we manually provide the same JDK clojure is using without enforcing
+  #       it at a code level (perhaps via overrides?), which we ought to.
   home.file.".config/clojure-lsp/config.edn".text = ''
   {:dependency-scheme "jar"
-   :java {:jdk-source-uri "file://${pkgs.jdk17}/zulu-17.jdk/Contents/Home/lib/src.zip"}}
+   :java {:jdk-source-uri "file://${pkgs.jdk21}/zulu-17.jdk/Contents/Home/lib/src.zip"}}
   '';
 
   programs.fish = {
