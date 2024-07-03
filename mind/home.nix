@@ -18,7 +18,8 @@ in
     termscp
     clj-kondo
     clojure
-    jdk21
+    zulu
+    bazelisk
   ];
 
   # Let Home Manager install and manage itself.
@@ -28,7 +29,7 @@ in
   #       it at a code level (perhaps via overrides?), which we ought to.
   home.file.".config/clojure-lsp/config.edn".text = ''
   {:dependency-scheme "jar"
-   :java {:jdk-source-uri "file://${pkgs.jdk21}/zulu-17.jdk/Contents/Home/lib/src.zip"}}
+   :java {:jdk-source-uri "file://${pkgs.zulu}/zulu-21.jdk/Contents/Home/lib/src.zip"}}
   '';
 
   programs.fish = {
@@ -76,6 +77,7 @@ in
       vi = "'nvim'";
       vim = "'nvim'";
       ls = "'eza'";
+      bazel = "'bazelisk'";
     };
     functions = {
       # Disable login greeting.
@@ -299,6 +301,7 @@ in
 
       nix.enable = true;
       conjure.enable = true;
+      zig.enable = true;
 
       lsp = {
         enable = true;
