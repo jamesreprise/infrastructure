@@ -31,6 +31,9 @@ in
   users.users.${name}.home = "/Users/${name}";
 
   system = {
+    activationScripts.extraActivation.text = ''
+      ln -sf "${pkgs.zulu}/zulu-21.jdk" "/Library/Java/JavaVirtualMachines/"
+    '';
     defaults = {
       ".GlobalPreferences" = {
         "com.apple.sound.beep.sound" = "/System/Library/Sounds/Frog.aiff";

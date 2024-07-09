@@ -20,6 +20,7 @@ in
     clojure
     zulu
     bazelisk
+    pre-commit
   ];
 
   # Let Home Manager install and manage itself.
