@@ -22,8 +22,9 @@ in
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = [ pkgs.vim ];
+  environment.systemPackages = with pkgs; [ bazelisk ];
   environment.shells = [ pkgs.fish ];
+  environment.pathsToLink = [ "/share/fish" ];
   programs.fish.enable = true;
   programs.zsh.enable = true;
 

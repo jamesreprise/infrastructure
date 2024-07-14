@@ -20,6 +20,7 @@ in
     clojure
     zulu
     bazelisk
+    devenv
     pre-commit
   ];
 
@@ -94,6 +95,8 @@ in
     git = true;
     icons = false;
   };
+
+  programs.direnv.enable = true;
 
   programs.gpg = {
     enable = true;
