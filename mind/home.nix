@@ -339,6 +339,11 @@ in
         action = "<cmd>ToggleTerm<CR>";
         key = "<C-q>";
       }
+      {
+        mode = ["n" "t"];
+        action = "<cmd>lua _lazygit_toggle()<CR>";
+        key = "<C-g>";
+      }
     ];
 
     extraPlugins = with pkgs.vimPlugins; [
@@ -350,10 +355,18 @@ in
     ];
 
     extraConfigLua = ''
+      -- clojure_lsp
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       require('lspconfig')['clojure_lsp'].setup {
         capabilities = capabilities
       }
+
+      -- lazygit
+      local Terminal = require('toggleterm.terminal').Terminal
+      local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float"})
+      function _lazygit_toggle()
+        lazygit:toggle()
+      end
     '';
   };
 
