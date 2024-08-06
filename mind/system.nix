@@ -40,8 +40,10 @@ in
         "com.apple.sound.beep.sound" = "/System/Library/Sounds/Frog.aiff";
       };
       NSGlobalDomain = {
+        _HIHideMenuBar = true;
         "com.apple.sound.beep.volume" = 0.4723665;
       };
+      menuExtraClock.IsAnalog = true;
       loginwindow = {
         SHOWFULLNAME = true;
       };
