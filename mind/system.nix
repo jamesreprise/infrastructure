@@ -61,6 +61,7 @@ in
       "spotify"
       "whatsapp"
       "raycast"
+      "element"
       "syncthing"
     ];
   };

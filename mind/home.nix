@@ -15,13 +15,10 @@ in
 
   home.packages = with pkgs; [ 
     pinentry-curses
-    termscp
-    clj-kondo
-    clojure
+    clj-kondo clojure
     zulu
     bazelisk
-    devenv
-    pre-commit
+    devenv pre-commit
   ];
 
   # Let Home Manager install and manage itself.
@@ -33,6 +30,8 @@ in
   {:dependency-scheme "jar"
    :java {:jdk-source-uri "file://${pkgs.zulu}/zulu-21.jdk/Contents/Home/lib/src.zip"}}
   '';
+
+  home.file.".hushlogin".text = "";
 
   programs.fish = {
     enable = true;
