@@ -209,6 +209,12 @@ in
         closeIfLastWindow = true;
         hideRootNode = true;
 
+        filesystem.filteredItems = {
+          hideDotfiles = false;
+          hideGitignored = true;
+          visible = true;
+        };
+
         defaultComponentConfigs = {
           icon = {
             folderClosed = ">";
@@ -278,6 +284,7 @@ in
 
       which-key = {
         enable = true;
+        settings.icons.mappings = null;
       };
 
       gitsigns.enable = true;
@@ -331,13 +338,13 @@ in
       }
       {
         mode = ["n"];
-        action = "<cmd>Neotree<CR>";
+        action = "<cmd>Neotree toggle<CR>";
         key = "<C-e>";
       }
       {
         mode = ["n" "t"];
         action = "<cmd>ToggleTerm<CR>";
-        key = "<C-q>";
+        key = "<C-'>";
       }
       {
         mode = ["n" "t"];
