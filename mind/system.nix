@@ -60,6 +60,7 @@ in
       "iterm2"
       "firefox"
       "keepassxc"
+      "mpv"
       "spotify"
       "whatsapp"
       "raycast"

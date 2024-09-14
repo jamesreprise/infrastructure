@@ -19,6 +19,7 @@ in
     zulu
     bazelisk
     devenv pre-commit
+    magic-wormhole
   ];
 
   # Let Home Manager install and manage itself.
@@ -277,12 +278,12 @@ in
 
       which-key = {
         enable = true;
-        triggers = "auto";
       };
+
       gitsigns.enable = true;
       lightline = {
         enable = true;
-        colorscheme = "wombat";
+        settings.colorscheme = "wombat";
       };
 
       notify = {
@@ -299,7 +300,7 @@ in
 
       todo-comments = {
         enable = true;
-        signs = false;
+        settings.signs = false;
       };
 
       nix.enable = true;
@@ -343,6 +344,26 @@ in
         action = "<cmd>lua _lazygit_toggle()<CR>";
         key = "<C-g>";
       }
+      {
+        mode = ["n"];
+        action = "<C-w>h";
+        key = "<C-h>";
+      }
+      {
+        mode = ["n"];
+        action = "<C-w>j";
+        key = "<C-j>";
+      }
+      {
+        mode = ["n"];
+        action = "<C-w>k";
+        key = "<C-k>";
+      }
+      {
+        mode = ["n"];
+        action = "<C-w>l";
+        key = "<C-l>";
+      }
     ];
 
     extraPlugins = with pkgs.vimPlugins; [
@@ -368,6 +389,4 @@ in
       end
     '';
   };
-
-  programs.mpv.enable = true;
 }
