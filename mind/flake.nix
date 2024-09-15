@@ -71,8 +71,10 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            # TODO: I think this shouldn't be necessary
-            users."${name}" = import ./home.nix { flake = self; nixvim = import ./nixvim.nix; };
+            users."${name}" = import ./home.nix {
+              flake = self;
+              nixvim = import ./nixvim.nix;
+            };
           };
         }
       ];
