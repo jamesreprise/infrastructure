@@ -102,10 +102,14 @@ in
     enable = true;
     mutableKeys = false;
     mutableTrust = false;
+    settings = {
+      pinentry-mode = "loopback";
+    };
   };
 
   home.file.".gnupg/gpg-agent.conf".text = ''
     pinentry-program ${pkgs.pinentry-curses}/bin/pinentry-curses
+    allow-loopback-pinentry
   '';
 
   programs.git = {
@@ -156,6 +160,7 @@ in
 
     # TODO: Move plugins out into their own files - allows for grouping with keymaps
     plugins = {
+      web-devicons.enable = false;
       treesitter.enable = true;
       treesitter-context.enable = true;
       treesitter-refactor = {
@@ -198,7 +203,11 @@ in
       telescope = {
         enable = true;
         settings = {
-          pickers.find_files.disable_devicons = true;
+          pickers = {
+            find_files.disable_devicons = true;
+            live_grep.disable_devicons = true;
+            grep_string.disable_devicons = true;
+          };
         };
       };
 
