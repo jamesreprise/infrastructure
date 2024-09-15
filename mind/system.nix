@@ -63,7 +63,6 @@ in
       "mpv"
       "spotify"
       "whatsapp"
-      "raycast"
       "element"
       "syncthing"
     ];

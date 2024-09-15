@@ -147,6 +147,7 @@ in
       ignorecase = true;
       background = "dark";
       shiftwidth = 4;
+      splitright = true;
     };
 
     colorschemes.gruvbox = {
