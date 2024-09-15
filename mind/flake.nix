@@ -30,7 +30,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask, home-manager, nixvim }:
+  outputs = { self, nix-darwin, nix-homebrew, nixpkgs, nixvim, homebrew-core, homebrew-cask, home-manager }:
   let
     name = "james";
     fullName = "James Williams";
@@ -72,7 +72,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             # TODO: I think this shouldn't be necessary
-            users."${name}" = import ./home.nix { flake = self; };
+            users."${name}" = import ./home.nix { flake = self; nixvim = import ./nixvim.nix; };
           };
         }
       ];
