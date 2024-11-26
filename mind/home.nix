@@ -20,6 +20,7 @@ in
     bazelisk
     devenv pre-commit
     magic-wormhole
+    texliveFull
   ];
 
   # Let Home Manager install and manage itself.
