@@ -231,6 +231,11 @@
       }
       {
         mode = ["n"];
+        action = "<cmd>lua vim.diagnostic.open_float(0, {scope='line'})<CR>";
+        key = "<leader>e";
+      }
+      {
+        mode = ["n"];
         action = "<C-w>h";
         key = "<C-h>";
       }
