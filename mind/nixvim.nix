@@ -277,5 +277,8 @@
       function _lazygit_toggle()
         lazygit:toggle()
       end
+
+      -- ties neovim default clipboard to system clipboard
+      vim.api.nvim_set_option("clipboard","unnamed")
     '';
 }
