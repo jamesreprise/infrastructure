@@ -20,6 +20,7 @@ in
     bazelisk
     devenv pre-commit
     magic-wormhole
+    mediainfo
     texliveFull
   ];
 
