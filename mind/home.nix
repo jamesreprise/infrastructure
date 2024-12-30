@@ -22,6 +22,8 @@ in
     magic-wormhole
     mediainfo
     texliveFull
+
+    protobuf
   ];
 
   # Let Home Manager install and manage itself.
