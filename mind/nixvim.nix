@@ -67,7 +67,13 @@
           };
         };
       };
-      auto-save.enable = true;
+      auto-save = {
+        enable = true;
+        settings = {
+          debounce_delay = 25;
+          write_all_buffers = true;
+        };
+      };
 
       telescope = {
         enable = true;
