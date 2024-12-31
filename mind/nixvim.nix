@@ -88,6 +88,7 @@
 
       lazygit.enable = true;
       toggleterm.enable = true;
+
       neo-tree = {
         enable = true;
         closeIfLastWindow = true;
