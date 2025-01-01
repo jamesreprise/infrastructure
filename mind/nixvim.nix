@@ -168,6 +168,8 @@
         };
       };
 
+      nvim-ufo.enable = true;
+
       which-key = {
         enable = true;
         settings.icons.mappings = null;
