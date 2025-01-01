@@ -8,6 +8,7 @@
     globals = {
       mapleader = ";";
       maplocalleader = ",";
+      sexp_enable_insert_mode_mappings = 0;
     };
 
     opts = {
