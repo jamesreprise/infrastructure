@@ -304,5 +304,8 @@
 
       -- ties neovim default clipboard to system clipboard
       vim.api.nvim_set_option("clipboard","unnamed")
+
+      -- start with no folds
+      vim.o.foldlevelstart = 99
     '';
 }
