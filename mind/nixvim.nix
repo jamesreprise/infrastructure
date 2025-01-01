@@ -218,8 +218,13 @@
     keymaps = [
       {
         mode = ["n"];
-        action = "<cmd>Telescope<CR>";
+        action = "<cmd>Telescope live_grep<CR>";
         key = "<C-f>";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>Telescope<CR>";
+        key = "<C-t>";
       }
       {
         mode = ["n"];
