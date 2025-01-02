@@ -97,7 +97,6 @@ in
     enable = true;
     enableFishIntegration = true;
     git = true;
-    icons = false;
   };
 
   programs.direnv.enable = true;

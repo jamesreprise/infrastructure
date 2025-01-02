@@ -214,8 +214,9 @@
           };
         };
         servers = {
-	  nil-ls.enable = true;
-	  clojure-lsp.enable = true;
+          nil_ls.enable = true;
+          clojure_lsp.enable = true;
+          protols.enable = true;
         };
       };
 
