@@ -59,7 +59,6 @@ in
     casks = [
       "iterm2"
       "firefox"
-      "mpv"
       "spotify"
       "whatsapp"
       "element"
