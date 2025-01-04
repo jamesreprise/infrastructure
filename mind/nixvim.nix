@@ -168,6 +168,12 @@
         };
       };
 
+      nvim-autopairs = {
+        enable = true;
+        settings = {
+          map_cr = false;
+        };
+      };
       nvim-ufo.enable = true;
 
       which-key = {
