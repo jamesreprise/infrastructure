@@ -9,6 +9,7 @@
       mapleader = ";";
       maplocalleader = ",";
       sexp_enable_insert_mode_mappings = 0;
+      "conjure#mapping#doc_word" = false;
     };
 
     opts = {
@@ -59,7 +60,6 @@
             { name = "nvim_lsp"; }
           ];
           mapping = {
-            "<C-Space>" = "cmp.mapping.complete()";
             "<C-u>" = "cmp.mapping.scroll_docs(-4)";
             "<C-d>" = "cmp.mapping.scroll_docs(4)";
             "<CR>" = "cmp.mapping.confirm({ select = true })";
@@ -109,6 +109,7 @@
           filteredItems = {
             hideDotfiles = false;
             hideGitignored = true;
+            visible = true;
           };
         };
 
@@ -191,6 +192,8 @@
           ts_ls.enable = true;
         };
       };
+
+      lsp-lines.enable = true;
 
       lint = {
         enable = true;
