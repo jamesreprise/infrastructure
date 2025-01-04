@@ -17,8 +17,12 @@ in
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings = {
+    # Necessary for using flakes on this system.
+    experimental-features = "nix-command flakes";
+    substituters = ["https://devenv.cachix.org"];
+    trusted-public-keys = ["devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="];
+  };
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
