@@ -41,7 +41,7 @@
         };
         highlightCurrentScope = {
           enable = true;
-          disable = ["nix"];
+          disable = ["nix" "typescript"];
         };
         navigation.enable = true;
       };
@@ -88,13 +88,45 @@
         closeIfLastWindow = true;
         hideRootNode = true;
 
-        filesystem.filteredItems = {
-          hideDotfiles = false;
-          hideGitignored = true;
-          visible = true;
+        buffers = {
+          followCurrentFile = {
+            enabled = true;
+            leaveDirsOpen = false;
+          };
+        };
+
+        gitStatusAsyncOptions = {
+          batchDelay = 10;
+          batchSize = 10000;
+          maxLines = 100000;
+        };
+
+        filesystem = {
+          followCurrentFile = {
+            enabled = true;
+            leaveDirsOpen = false;
+          };
+          filteredItems = {
+            hideDotfiles = false;
+            hideGitignored = true;
+          };
         };
 
         defaultComponentConfigs = {
+          diagnostics = {
+            symbols = {
+              hint = "H";
+              info = "I";
+              warn = "!";
+              error = "X";
+            };
+            highlights = {
+              hint = "DiagnosticSignHint";
+              info = "DiagnosticSignInfo";
+              warn = "DiagnosticSignWarn";
+              error = "DiagnosticSignError";
+            };
+          };
           gitStatus.symbols = {
             added = "+";
             deleted = "-";
@@ -153,13 +185,14 @@
           };
         };
         servers = {
-          nil_ls.enable = true;
+          nixd.enable = true;
           clojure_lsp.enable = true;
           protols.enable = true;
+          ts_ls.enable = true;
         };
       };
 
-      lint = { 
+      lint = {
         enable = true;
         lintersByFt = {
           clojure = [ "clj-kondo" ];
@@ -185,7 +218,7 @@
       }
       {
         mode = ["n" "t"];
-        action = "<cmd>ToggleTerm<CR>";
+        action = "<cmd>ToggleTerm direction=float<CR>";
         key = "<C-'>";
       }
       {
@@ -243,7 +276,7 @@
       end
 
       -- ties neovim default clipboard to system clipboard
-      vim.api.nvim_set_option("clipboard","unnamed")
+      vim.api.nvim_set_option("clipboard", "unnamed")
 
       -- start with no folds
       vim.o.foldlevelstart = 99
