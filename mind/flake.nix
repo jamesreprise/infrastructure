@@ -41,7 +41,7 @@
       defaultFullName = fullName;
       defaultEmail = email;
     };
-    systemConfiguration = import ./system.nix { flake = self; };
+    systemConfiguration = import ./system.nix { flake = self; system = system; };
   in
   {
     # Build darwin flake using:

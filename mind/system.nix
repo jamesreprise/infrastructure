@@ -1,4 +1,4 @@
-{ flake }:
+{ flake, system }:
 { pkgs, config, ... }:
 let
   name = config.username;
@@ -31,6 +31,8 @@ in
   environment.pathsToLink = [ "/share/fish" ];
   programs.fish.enable = true;
   programs.zsh.enable = true;
+
+  networking.hostName = system;
 
   # Otherwise our home points to /var/empty (https://github.com/LnL7/nix-darwin/issues/423)
   users.users.${name}.home = "/Users/${name}";
