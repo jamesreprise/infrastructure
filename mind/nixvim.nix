@@ -30,7 +30,7 @@
 
     # TODO: Move plugins out into their own files - allows for grouping with keymaps
     plugins = {
-      web-devicons.enable = false;
+      web-devicons.enable = true;
       treesitter.enable = true;
       treesitter-context.enable = true;
       treesitter-refactor = {
@@ -78,13 +78,6 @@
 
       telescope = {
         enable = true;
-        settings = {
-          pickers = {
-            find_files.disable_devicons = true;
-            live_grep.disable_devicons = true;
-            grep_string.disable_devicons = true;
-          };
-        };
       };
 
       lazygit.enable = true;
@@ -102,26 +95,6 @@
         };
 
         defaultComponentConfigs = {
-          icon = {
-            folderClosed = ">";
-            folderEmpty = "≥";
-            folderOpen = "v";
-            folderEmptyOpen = "v";
-          };
-          diagnostics = {
-            symbols = {
-              hint = "H";
-              info = "I";
-              warn = "!";
-              error = "X";
-            };
-            highlights = {
-              hint = "DiagnosticSignHint";
-              info = "DiagnosticSignInfo";
-              warn = "DiagnosticSignWarn";
-              error = "DiagnosticSignError";
-            };
-          };
           gitStatus.symbols = {
             added = "+";
             deleted = "-";
@@ -133,38 +106,6 @@
             unstaged = "u";
             staged = "s";
           };
-        };
-
-        renderers = {
-          directory = [ 
-            "indent"
-            "icon"
-            "current_filter"
-            {
-              name = "container";
-              content = [
-                { name = "name"; zindex = 10; }
-                { name = "clipboard"; zindex = 10; }
-                { name = "diagnostics"; errors_only = true; zindex = 20; align = "right"; hide_when_expanded = true; }
-                { name = "git_status"; zindex = 20; align = "right"; hide_when_expanded = true; }
-              ];
-            }
-          ];
-          file = [
-            "indent"
-            {
-              name = "container";
-              content = [
-                { name = "name"; zindex = 10; }
-                { name = "clipboard"; zindex = 10; }
-                { name = "bufnr"; zindex = 10; }
-                { name = "modified"; zindex = 20; align = "right"; }
-                { name = "diagnostics"; zindex = 20; align = "right"; }
-                { name = "git_status"; zindex = 20; align = "right"; }
-              ];
-            }
-          ];
-          terminal = [ "indent" "name" "bufnr" ];
         };
       };
 
@@ -178,7 +119,6 @@
 
       which-key = {
         enable = true;
-        settings.icons.mappings = null;
       };
 
       gitsigns.enable = true;
@@ -190,13 +130,6 @@
       notify = {
         enable = true;
         fps = 60;
-        icons = {
-          debug = "D";
-          error = "E";
-          info = "I";
-          trace = "T";
-          warn = "W";
-        };
       };
 
       todo-comments = {
