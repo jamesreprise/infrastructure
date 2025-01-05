@@ -204,7 +204,12 @@
     };
 
     keymaps = [
-      {
+     {
+        mode = ["n"];
+        action = "<cmd>Telescope find_files<CR>";
+        key = "<S-C-f>";
+     }
+     {
         mode = ["n"];
         action = "<cmd>Telescope live_grep<CR>";
         key = "<C-f>";
