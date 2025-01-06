@@ -14,16 +14,21 @@ in
   home.homeDirectory = "/Users/${name}";
 
   home.packages = with pkgs; [ 
-    pinentry-curses
-    clj-kondo clojure
-    zulu
+    # Development
     bazelisk
-    devenv pre-commit
+    clj-kondo
+    clojure
+    devenv
+    pinentry-curses
+    pre-commit
+    protobuf
+    zulu
+    podman
+
+    # Tools
     magic-wormhole
     mediainfo
     texliveFull
-
-    protobuf
   ];
 
   # Let Home Manager install and manage itself.
