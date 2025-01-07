@@ -16,8 +16,10 @@
       number = true;
       ignorecase = true;
       background = "dark";
-      shiftwidth = 4;
+      shiftwidth = 2;
       splitright = true;
+      expandtab = true;
+      smarttab = true;
     };
 
     colorschemes.gruvbox = {
