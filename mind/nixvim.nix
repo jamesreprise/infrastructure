@@ -257,7 +257,7 @@
         key = "<localleader>la";
       }
       {
-        mode = ["i"];
+        mode = ["n" "i"];
         action = "<cmd>lua vim.lsp.buf.signature_help()<CR>";
         key = "<C-S>";
       }
