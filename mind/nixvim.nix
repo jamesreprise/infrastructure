@@ -22,6 +22,11 @@
       smarttab = true;
     };
 
+    # highlightOverride = {
+    #   NeoTreeDirectoryName = { fg = "blue"; };
+    #   NeoTreeDirectoryIcon = { fg = "blue"; };
+    # };
+    #
     colorschemes.gruvbox = {
       enable = true;
       settings = {
@@ -44,7 +49,7 @@
         };
         highlightCurrentScope = {
           enable = true;
-          disable = ["nix" "typescript"];
+          disable = ["nix" "typescript" "cpp"];
         };
         navigation.enable = true;
       };
@@ -197,7 +202,7 @@
 
       lsp-lines.enable = true;
 
-      lint = {
+      lint = { 
         enable = true;
         lintersByFt = {
           clojure = [ "clj-kondo" ];
@@ -206,12 +211,12 @@
     };
 
     keymaps = [
-     {
+      {
         mode = ["n"];
         action = "<cmd>Telescope find_files<CR>";
         key = "<S-C-f>";
-     }
-     {
+      }
+      {
         mode = ["n"];
         action = "<cmd>Telescope live_grep<CR>";
         key = "<C-f>";
@@ -243,6 +248,21 @@
       }
       {
         mode = ["n"];
+        action = "<cmd>lua vim.lsp.buf.rename()<CR>";
+        key = "<localleader>lr";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+        key = "<localleader>la";
+      }
+      {
+        mode = ["i"];
+        action = "<cmd>lua vim.lsp.buf.signature_help()<CR>";
+        key = "<C-S>";
+      }
+      {
+        mode = ["n"];
         action = "<C-w>h";
         key = "<C-h>";
       }
@@ -269,6 +289,7 @@
       vim-sexp-mappings-for-regular-people
       vim-easymotion
       playground # treesitter-playground
+      telescope-ui-select-nvim
     ];
 
     extraConfigLua = ''
@@ -290,5 +311,8 @@
 
       -- start with no folds
       vim.o.foldlevelstart = 99
+
+      -- enable telescope-ui-select.nvim
+      require("telescope").load_extension("ui-select")
     '';
 }
