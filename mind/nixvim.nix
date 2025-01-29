@@ -317,5 +317,8 @@
 
       -- start with no folds
       vim.o.foldlevelstart = 99
+
+      -- inlay hints
+      vim.lsp.inlay_hint.enable(true)
     '';
 }
