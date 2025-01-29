@@ -40,19 +40,19 @@
     plugins = {
       web-devicons.enable = true;
       treesitter.enable = true;
-      treesitter-context.enable = true;
-      treesitter-refactor = {
-        enable = true;
-        highlightDefinitions = {
-          enable = true;
-          clearOnCursorMove = true;
-        };
-        highlightCurrentScope = {
-          enable = true;
-          disable = ["nix" "typescript" "cpp"];
-        };
-        navigation.enable = true;
-      };
+      # treesitter-context.enable = true;
+      # treesitter-refactor = {
+      #   enable = true;
+      #   highlightDefinitions = {
+      #     enable = true;
+      #     clearOnCursorMove = true;
+      #   };
+      #   highlightCurrentScope = {
+      #     enable = true;
+      #     disable = ["nix" "typescript" "cpp"];
+      #   };
+      #   navigation.enable = true;
+      # };
       cmp-buffer.enable = true;
       cmp-path.enable = true;
       cmp_luasnip.enable = true;
@@ -88,7 +88,10 @@
       };
 
       lazygit.enable = true;
+
       toggleterm.enable = true;
+
+      dressing.enable = true;
 
       neo-tree = {
         enable = true;
@@ -181,6 +184,8 @@
       conjure.enable = true;
       zig.enable = true;
 
+      rustaceanvim.enable = true;
+
       lsp = {
         enable = true;
         keymaps = {
@@ -193,8 +198,9 @@
           };
         };
         servers = {
-          nixd.enable = true;
           clojure_lsp.enable = true;
+          gopls.enable = true;
+          nixd.enable = true;
           protols.enable = true;
           ts_ls.enable = true;
         };
@@ -249,15 +255,15 @@
       {
         mode = ["n"];
         action = "<cmd>lua vim.lsp.buf.rename()<CR>";
-        key = "<localleader>lr";
+        key = "<leader>lr";
       }
       {
         mode = ["n"];
         action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
-        key = "<localleader>la";
+        key = "<leader>la";
       }
       {
-        mode = ["n" "i"];
+        mode = ["i" "n"];
         action = "<cmd>lua vim.lsp.buf.signature_help()<CR>";
         key = "<C-S>";
       }
@@ -289,7 +295,6 @@
       vim-sexp-mappings-for-regular-people
       vim-easymotion
       playground # treesitter-playground
-      telescope-ui-select-nvim
     ];
 
     extraConfigLua = ''
@@ -309,10 +314,8 @@
       -- ties neovim default clipboard to system clipboard
       vim.api.nvim_set_option("clipboard", "unnamed")
 
+
       -- start with no folds
       vim.o.foldlevelstart = 99
-
-      -- enable telescope-ui-select.nvim
-      require("telescope").load_extension("ui-select")
     '';
 }
