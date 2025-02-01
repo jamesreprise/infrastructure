@@ -20,10 +20,11 @@ in
     clojure
     devenv
     pinentry-curses
+    podman
     pre-commit
     protobuf
+    rustup
     zulu
-    podman
 
     # Tools
     magic-wormhole
