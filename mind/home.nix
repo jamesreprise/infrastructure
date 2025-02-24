@@ -30,6 +30,7 @@ in
     magic-wormhole
     mediainfo
     texliveFull
+    inetutils
   ];
 
   # Let Home Manager install and manage itself.

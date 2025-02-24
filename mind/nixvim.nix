@@ -156,6 +156,7 @@
         enable = true;
         settings = {
           map_cr = false;
+          enable_check_bracket_line = false;
         };
       };
       nvim-ufo.enable = true;
