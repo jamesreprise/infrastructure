@@ -269,6 +269,11 @@
         key = "<C-S>";
       }
       {
+        mode = ["i" "n"];
+        action = "<Plug>(easymotion-s)";
+        key = "<C-Q>";
+      }
+      {
         mode = ["n"];
         action = "<C-w>h";
         key = "<C-h>";
