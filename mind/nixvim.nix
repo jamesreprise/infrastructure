@@ -78,7 +78,7 @@
       auto-save = {
         enable = true;
         settings = {
-          debounce_delay = 25;
+          debounce_delay = 150;
           write_all_buffers = true;
         };
       };
@@ -204,6 +204,7 @@
           nixd.enable = true;
           protols.enable = true;
           ts_ls.enable = true;
+          starpls.enable = true;
         };
       };
 
