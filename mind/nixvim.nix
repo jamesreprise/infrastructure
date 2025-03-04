@@ -205,6 +205,7 @@
           protols.enable = true;
           ts_ls.enable = true;
           starpls.enable = true;
+          java_language_server.enable = true;
         };
       };
 
