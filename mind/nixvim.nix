@@ -5,6 +5,14 @@
     viAlias = true;
     vimAlias = true;
 
+    autoCmd = [
+      {
+        event = ["BufRead" "BufNewFile"];
+        pattern = [ "*.bb" ];
+        command = "set filetype=clojure";
+      }
+    ];
+
     globals = {
       mapleader = ";";
       maplocalleader = ",";
