@@ -18,6 +18,9 @@ in
     bazelisk
     clj-kondo
     clojure
+    babashka
+    rlwrap
+    nmap
     devenv
     pinentry-curses
     podman
