@@ -7,7 +7,7 @@
 
     autoCmd = [
       {
-        event = ["BufRead" "BufNewFile"];
+        event = [ "BufRead" "BufNewFile" ];
         pattern = [ "*.bb" ];
         command = "set filetype=clojure";
       }
@@ -113,13 +113,18 @@
           };
         };
 
+        enableRefreshOnWrite = true;
+
+        enableGitStatus = true;
+        gitStatusAsync = true;
         gitStatusAsyncOptions = {
           batchDelay = 10;
-          batchSize = 10000;
-          maxLines = 100000;
+          batchSize = 1000;
+          maxLines = 10000;
         };
 
         filesystem = {
+          asyncDirectoryScan = "auto";
           followCurrentFile = {
             enabled = true;
             leaveDirsOpen = false;
@@ -218,6 +223,11 @@
       };
 
       lsp-lines.enable = true;
+      lsp-format = {
+        enable = true;
+        autoLoad = true;
+        lspServersToEnable = "all";
+      };
 
       lint = { 
         enable = true;
@@ -320,6 +330,15 @@
         capabilities = capabilities
       }
 
+      -- lsp-format
+      require("lsp-format").setup {}
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+          local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+          require("lsp-format").on_attach(client, args.buf)
+        end,
+      })
+
       -- lazygit
       local Terminal = require('toggleterm.terminal').Terminal
       local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float"})
@@ -329,7 +348,6 @@
 
       -- ties neovim default clipboard to system clipboard
       vim.api.nvim_set_option("clipboard", "unnamed")
-
 
       -- start with no folds
       vim.o.foldlevelstart = 99

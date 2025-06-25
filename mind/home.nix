@@ -13,10 +13,11 @@ in
   home.username = name;
   home.homeDirectory = "/Users/${name}";
 
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     # Development
     bazelisk
     clj-kondo
+    cljfmt
     clojure
     babashka
     rlwrap
