@@ -20,7 +20,6 @@ in
     clojure
     babashka
     rlwrap
-    nmap
     devenv
     pinentry-curses
     podman
@@ -30,6 +29,8 @@ in
     zulu
 
     # Tools
+    atuin
+    nmap
     magic-wormhole
     mediainfo
     texliveFull
