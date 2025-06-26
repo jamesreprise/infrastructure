@@ -18,6 +18,7 @@
       maplocalleader = ",";
       sexp_enable_insert_mode_mappings = 0;
       "conjure#mapping#doc_word" = false;
+      "conjure#client#clojure#nrepl#connection#auto_repl#cmd" = "clj -M:nrepl";
     };
 
     opts = {
