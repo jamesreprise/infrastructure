@@ -27,7 +27,7 @@ in
     pre-commit
     protobuf
     rustup
-    zulu
+    zulu24
 
     # Tools
     atuin
@@ -44,8 +44,8 @@ in
   # WARN: we manually provide the same JDK clojure is using without enforcing
   #       it at a code level (perhaps via overrides?), which we ought to.
   home.file.".config/clojure-lsp/config.edn".text = ''
-  {:dependency-scheme "jar"
-   :java {:jdk-source-uri "file://${pkgs.zulu}/zulu-21.jdk/Contents/Home/lib/src.zip"}}
+  {:dependency-scheme "zipfile"
+   :java {:jdk-source-uri "file://${pkgs.zulu24}/lib/src.zip"}}
   '';
 
   home.file.".hushlogin".text = "";

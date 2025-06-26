@@ -48,19 +48,19 @@
     plugins = {
       web-devicons.enable = true;
       treesitter.enable = true;
-      # treesitter-context.enable = true;
-      # treesitter-refactor = {
-      #   enable = true;
-      #   highlightDefinitions = {
-      #     enable = true;
-      #     clearOnCursorMove = true;
-      #   };
-      #   highlightCurrentScope = {
-      #     enable = true;
-      #     disable = ["nix" "typescript" "cpp"];
-      #   };
-      #   navigation.enable = true;
-      # };
+      treesitter-context.enable = true;
+      treesitter-refactor = {
+        enable = true;
+        highlightDefinitions = {
+          enable = true;
+          clearOnCursorMove = true;
+        };
+        highlightCurrentScope = {
+          enable = true;
+          disable = ["nix" "typescript" "cpp"];
+        };
+        navigation.enable = true;
+      };
       cmp-buffer.enable = true;
       cmp-path.enable = true;
       cmp_luasnip.enable = true;
