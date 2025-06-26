@@ -186,7 +186,7 @@
 
       notify = {
         enable = true;
-        fps = 60;
+        settings.fps = 60;
       };
 
       todo-comments = {
@@ -217,12 +217,22 @@
           nixd.enable = true;
           protols.enable = true;
           ts_ls.enable = true;
-          starpls.enable = true;
+          starpls = {
+            enable = true;
+            autostart = true;
+            cmd = ["starpls" "server" "--bazel_path" "${pkgs.bazelisk}/bin/bazelisk"];
+            filetypes = [ "bzl" "bazel" ];
+            rootMarkers = [ "WORKSPACE" "WORKSPACE.bzl" "WORKSPACE.bazel" "MODULE" "MODULE.bzl" "MODULE.bazel"];
+          };
           java_language_server.enable = true;
         };
       };
 
-      lsp-lines.enable = true;
+      lsp-lines = {
+        enable = true;
+        autoLoad = true;
+      };
+
       lsp-format = {
         enable = true;
         autoLoad = true;
@@ -338,6 +348,9 @@
           require("lsp-format").on_attach(client, args.buf)
         end,
       })
+
+      -- lsp-lines
+      vim.diagnostic.config({virtual_lines = true})
 
       -- lazygit
       local Terminal = require('toggleterm.terminal').Terminal
