@@ -7,7 +7,7 @@
 
     autoCmd = [
       {
-        event = ["BufRead" "BufNewFile"];
+        event = [ "BufRead" "BufNewFile" ];
         pattern = [ "*.bb" ];
         command = "set filetype=clojure";
       }
@@ -18,6 +18,7 @@
       maplocalleader = ",";
       sexp_enable_insert_mode_mappings = 0;
       "conjure#mapping#doc_word" = false;
+      "conjure#client#clojure#nrepl#connection#auto_repl#cmd" = "clj -M:nrepl";
     };
 
     opts = {
@@ -48,19 +49,19 @@
     plugins = {
       web-devicons.enable = true;
       treesitter.enable = true;
-      # treesitter-context.enable = true;
-      # treesitter-refactor = {
-      #   enable = true;
-      #   highlightDefinitions = {
-      #     enable = true;
-      #     clearOnCursorMove = true;
-      #   };
-      #   highlightCurrentScope = {
-      #     enable = true;
-      #     disable = ["nix" "typescript" "cpp"];
-      #   };
-      #   navigation.enable = true;
-      # };
+      treesitter-context.enable = true;
+      treesitter-refactor = {
+        enable = true;
+        highlightDefinitions = {
+          enable = true;
+          clearOnCursorMove = true;
+        };
+        highlightCurrentScope = {
+          enable = true;
+          disable = ["nix" "typescript" "cpp"];
+        };
+        navigation.enable = true;
+      };
       cmp-buffer.enable = true;
       cmp-path.enable = true;
       cmp_luasnip.enable = true;
@@ -101,8 +102,6 @@
 
       dressing.enable = true;
 
-      fugitive.enable = true;
-
       neo-tree = {
         enable = true;
         closeIfLastWindow = true;
@@ -115,13 +114,18 @@
           };
         };
 
+        enableRefreshOnWrite = true;
+
+        enableGitStatus = true;
+        gitStatusAsync = true;
         gitStatusAsyncOptions = {
           batchDelay = 10;
-          batchSize = 10000;
-          maxLines = 100000;
+          batchSize = 1000;
+          maxLines = 10000;
         };
 
         filesystem = {
+          asyncDirectoryScan = "auto";
           followCurrentFile = {
             enabled = true;
             leaveDirsOpen = false;
@@ -183,7 +187,7 @@
 
       notify = {
         enable = true;
-        fps = 60;
+        settings.fps = 60;
       };
 
       todo-comments = {
@@ -214,12 +218,27 @@
           nixd.enable = true;
           protols.enable = true;
           ts_ls.enable = true;
-          starpls.enable = true;
+          starpls = {
+            enable = true;
+            autostart = true;
+            cmd = ["starpls" "server" "--bazel_path" "${pkgs.bazelisk}/bin/bazelisk"];
+            filetypes = [ "bzl" "bazel" ];
+            rootMarkers = [ "WORKSPACE" "WORKSPACE.bzl" "WORKSPACE.bazel" "MODULE" "MODULE.bzl" "MODULE.bazel"];
+          };
           java_language_server.enable = true;
         };
       };
 
-      lsp-lines.enable = true;
+      lsp-lines = {
+        enable = true;
+        autoLoad = true;
+      };
+
+      lsp-format = {
+        enable = true;
+        autoLoad = true;
+        lspServersToEnable = "all";
+      };
 
       lint = { 
         enable = true;
@@ -322,6 +341,18 @@
         capabilities = capabilities
       }
 
+      -- lsp-format
+      require("lsp-format").setup {}
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+          local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+          require("lsp-format").on_attach(client, args.buf)
+        end,
+      })
+
+      -- lsp-lines
+      vim.diagnostic.config({virtual_lines = true})
+
       -- lazygit
       local Terminal = require('toggleterm.terminal').Terminal
       local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float"})
@@ -331,7 +362,6 @@
 
       -- ties neovim default clipboard to system clipboard
       vim.api.nvim_set_option("clipboard", "unnamed")
-
 
       -- start with no folds
       vim.o.foldlevelstart = 99
