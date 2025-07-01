@@ -237,7 +237,7 @@
       lsp-format = {
         enable = true;
         autoLoad = true;
-        lspServersToEnable = "all";
+        lspServersToEnable = [ "clojure-lsp" "nixd" ];
       };
 
       lint = { 
