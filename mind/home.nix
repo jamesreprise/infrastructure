@@ -27,6 +27,7 @@ in
     pre-commit
     protobuf
     rustup
+    evcxr
     zulu24
 
     # Tools
