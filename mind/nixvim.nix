@@ -218,6 +218,9 @@
           nixd.enable = true;
           protols.enable = true;
           ts_ls.enable = true;
+          svelte.enable = true;
+          tailwindcss.enable = true;
+          html.enable = true;
           starpls = {
             enable = true;
             autostart = true;
@@ -340,6 +343,15 @@
       require('lspconfig')['clojure_lsp'].setup {
         capabilities = capabilities
       }
+
+      require('lspconfig').ts_ls.setup {
+        filetypes = { "ts" "svelte" "html" }
+      }
+
+      require('lspconfig').html.setup {
+        filetypes = { "html" "svelte" }
+      }
+
 
       -- lsp-format
       require("lsp-format").setup {}

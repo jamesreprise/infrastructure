@@ -5,7 +5,7 @@ let
   name = osConfig.username;
 in
 {
-  imports = [ flake.inputs.nixvim.homeManagerModules.nixvim ];
+  imports = [ flake.inputs.nixvim.homeModules.nixvim ];
 
   # Don't change.
   home.stateVersion = "23.11";
@@ -37,6 +37,10 @@ in
     mediainfo
     texliveFull
     inetutils
+    websocat
+
+    nodejs_24
+    bun
   ];
 
   # Let Home Manager install and manage itself.
