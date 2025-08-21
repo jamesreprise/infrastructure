@@ -48,7 +48,10 @@
     # TODO: Move plugins out into their own files - allows for grouping with keymaps
     plugins = {
       web-devicons.enable = true;
-      treesitter.enable = true;
+      treesitter = {
+        enable = true;
+        settings.highlight.enable = true;
+      };
       treesitter-context.enable = true;
       treesitter-refactor = {
         enable = true;
@@ -343,15 +346,6 @@
       require('lspconfig')['clojure_lsp'].setup {
         capabilities = capabilities
       }
-
-      require('lspconfig').ts_ls.setup {
-        filetypes = { "ts" "svelte" "html" }
-      }
-
-      require('lspconfig').html.setup {
-        filetypes = { "html" "svelte" }
-      }
-
 
       -- lsp-format
       require("lsp-format").setup {}
