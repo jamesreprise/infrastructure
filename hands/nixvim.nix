@@ -250,6 +250,26 @@
 
     keymaps = [
       {
+        mode = ["n" "t" "v"];
+        action = "<cmd>1tabnext<CR>";
+        key = "<C-1>";
+      }
+      {
+        mode = ["n" "t" "v"];
+        action = "<cmd>2tabnext<CR>";
+        key = "<C-2>";
+      }
+      {
+        mode = ["n" "t" "v"];
+        action = "<cmd>3tabnext<CR>";
+        key = "<C-3>";
+      }
+      {
+        mode = ["n" "t" "v"];
+        action = "<cmd>4tabnext<CR>";
+        key = "<C-4>";
+      }
+      {
         mode = ["n"];
         action = "<cmd>Telescope find_files<CR>";
         key = "<S-C-f>";
