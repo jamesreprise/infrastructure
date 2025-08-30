@@ -24,6 +24,7 @@ set fish_greeting
 
 # Add homebrew to PATH
 fish_add_path /opt/homebrew/bin
+fish_add_path ~/.cargo/bin
 
 # GPG signing for git
 set -x GPG_TTY (tty)

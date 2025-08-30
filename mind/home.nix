@@ -95,6 +95,9 @@ in
 
       # Required for pinentry-curses & GPG
       set -x GPG_TTY (tty)
+
+      # Add cargo binaries to path
+      fish_add_path ~/.cargo/bin
     '';
     shellAliases = {
       vi = "'nvim'";
