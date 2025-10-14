@@ -338,6 +338,15 @@
       vim-sexp-mappings-for-regular-people
       vim-easymotion
       playground # treesitter-playground
+      (pkgs.vimUtils.buildVimPlugin {
+         name = "amp";
+         src = pkgs.fetchFromGitHub {
+           owner = "sourcegraph";
+           repo = "amp.nvim";
+           rev = "ccce82a82897b788d748e59cf09d958c3bfdd7e6";
+           hash = "sha256-+jIbAZjRpt30gcrIiwW+yZhT9CFLnW9ARf92GEfioZ0=";
+         };
+      })
     ];
 
     extraConfigLua = ''
@@ -374,5 +383,8 @@
 
       -- inlay hints
       vim.lsp.inlay_hint.enable(true)
+
+      -- amp
+      require('amp').setup({ auto_start = true, log_level = "info" })
     '';
 }

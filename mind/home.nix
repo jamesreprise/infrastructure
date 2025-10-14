@@ -98,6 +98,8 @@ in
 
       # Add cargo binaries to path
       fish_add_path ~/.cargo/bin
+
+      fish_add_path ~/.local/bin
     '';
     shellAliases = {
       vi = "'nvim'";
