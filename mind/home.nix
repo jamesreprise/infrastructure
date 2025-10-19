@@ -137,9 +137,12 @@ in
 
   programs.git = {
     enable = true;
-    userName = osConfig.fullName;
-    userEmail = osConfig.email;
-
+    settings = {
+      user = {
+        name = osConfig.fullName;
+        email = osConfig.email;
+      };
+    };
     signing = {
       signByDefault = true;
       key = null;

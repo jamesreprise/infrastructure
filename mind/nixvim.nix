@@ -107,64 +107,62 @@
 
       neo-tree = {
         enable = true;
-        closeIfLastWindow = true;
-        hideRootNode = true;
+        autoLoad = true;
+        settings = {
+          close_if_last_window = true;
+          hide_root_node = true;
 
-        buffers = {
-          followCurrentFile = {
-            enabled = true;
-            leaveDirsOpen = false;
-          };
-        };
-
-        enableRefreshOnWrite = true;
-
-        enableGitStatus = true;
-        gitStatusAsync = true;
-        gitStatusAsyncOptions = {
-          batchDelay = 10;
-          batchSize = 1000;
-          maxLines = 10000;
-        };
-
-        filesystem = {
-          asyncDirectoryScan = "auto";
-          followCurrentFile = {
-            enabled = true;
-            leaveDirsOpen = false;
-          };
-          filteredItems = {
-            hideDotfiles = false;
-            hideGitignored = true;
-            visible = true;
-          };
-        };
-
-        defaultComponentConfigs = {
-          diagnostics = {
-            symbols = {
-              hint = "H";
-              info = "I";
-              warn = "!";
-              error = "X";
-            };
-            highlights = {
-              hint = "DiagnosticSignHint";
-              info = "DiagnosticSignInfo";
-              warn = "DiagnosticSignWarn";
-              error = "DiagnosticSignError";
+          buffers = {
+            follow_current_file = {
+              enabled = true;
+              leave_dirs_open = false;
             };
           };
-          gitStatus.symbols = {
-            added = "+";
-            deleted = "-";
-            modified = "~";
-            conflict = "x";
-            renamed = "r";
-            untracked = "U";
-            ignored = "i";
-            unstaged = "u";
-            staged = "s";
+
+          enable_refresh_on_write = true;
+
+          enable_git_tatus = true;
+          git_status_async = true;
+
+          filesystem = {
+            async_directory_scan = "auto";
+            follow_current_file = {
+              enabled = true;
+              leave_dirs_open = false;
+            };
+            filtered_items = {
+              hide_dotfiles = false;
+              hide_gitignored = true;
+              visible = true;
+            };
+          };
+
+          default_component_configs = {
+            diagnostics = {
+              symbols = {
+                hint = "H";
+                info = "I";
+                warn = "!";
+                error = "X";
+              };
+              highlights = {
+                hint = "DiagnosticSignHint";
+                info = "DiagnosticSignInfo";
+                warn = "DiagnosticSignWarn";
+                error = "DiagnosticSignError";
+              };
+            };
+            git_status.symbols = {
+              added = "+";
+              deleted = "-";
+              modified = "~";
+              conflict = "x";
+              renamed = "r";
+              untracked = "U";
+              ignored = "i";
+              unstaged = "u";
+              staged = "s";
+            };
           };
         };
       };
@@ -343,7 +341,7 @@
     extraConfigLua = ''
       -- clojure_lsp
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      require('lspconfig')['clojure_lsp'].setup {
+      vim.lsp.config['clojure_lsp'] = {
         capabilities = capabilities
       }
 
