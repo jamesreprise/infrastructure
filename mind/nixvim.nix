@@ -31,16 +31,21 @@
       smarttab = true;
     };
 
-    # highlightOverride = {
-    #   NeoTreeDirectoryName = { fg = "blue"; };
-    #   NeoTreeDirectoryIcon = { fg = "blue"; };
-    # };
-    #
+    highlightOverride = {
+      NeoTreeGitModified = {
+        fg = "#d7af5f";
+      };
+    };
     colorschemes.gruvbox = {
       enable = true;
       settings = {
         overrides = {
-          SignColumn = { bg = "#282828"; };
+          SignColumn = { link = "GruvboxBg0"; };
+          DiagnosticSignError = { link = "DiagnosticError"; };
+          DiagnosticSignWarn = { link = "DiagnosticWarn"; };
+          DiagnosticSignInfo = { link = "DiagnosticInfo"; };
+          DiagnosticSignHint = { link = "DiagnosticHint"; };
+          DiagnosticSignOk = { link = "DiagnosticOk"; };
         };
       };
     };
@@ -121,7 +126,7 @@
 
           enable_refresh_on_write = true;
 
-          enable_git_tatus = true;
+          enable_git_status = true;
           git_status_async = true;
 
           filesystem = {
@@ -135,6 +140,7 @@
               hide_gitignored = true;
               visible = true;
             };
+            # use_libuv_file_watcher = true;
           };
 
           default_component_configs = {
@@ -151,6 +157,9 @@
                 warn = "DiagnosticSignWarn";
                 error = "DiagnosticSignError";
               };
+            };
+            name = {
+              use_git_status_colors = true;
             };
             git_status.symbols = {
               added = "+";
