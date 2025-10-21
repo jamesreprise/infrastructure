@@ -19,7 +19,7 @@
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
-      nixvim-hm-module = nixvim.homeManagerModules.nixvim;
+      nixvim-hm-module = nixvim.homeModules.nixvim;
       nixvim-config = import ./nixvim.nix;
       home-config = import ./home.nix { nixvim = nixvim-config; };
     in {
