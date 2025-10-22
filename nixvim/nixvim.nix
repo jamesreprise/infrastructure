@@ -247,6 +247,8 @@
             rootMarkers = [ "WORKSPACE" "WORKSPACE.bzl" "WORKSPACE.bazel" "MODULE" "MODULE.bzl" "MODULE.bazel"];
           };
           java_language_server.enable = true;
+          jsonnet_ls.enable = true;
+          jsonls.enable = true;
         };
       };
 
