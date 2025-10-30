@@ -218,6 +218,8 @@
       zig.enable = true;
 
       rustaceanvim.enable = true;
+      dap.enable = true;
+      dap-ui.enable = true;
 
       lsp = {
         enable = true;
@@ -343,6 +345,36 @@
         key = "<C-S>";
       }
       {
+        mode = ["n"];
+        action = "<cmd>lua require('dapui').toggle()<CR>";
+        key = "<leader>du";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>lua require('dap').toggle_breakpoint()<CR>";
+        key = "<leader>db";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>lua require('dap').repl.open()<CR>";
+        key = "<leader>dr";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>RustLsp debug<CR>";
+        key = "<leader>rD";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>RustLsp debuggables<CR>";
+        key = "<leader>rd";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>RustLsp openDocs<CR>";
+        key = "<leader>ro";
+      }
+      {
         mode = ["i" "n"];
         action = "<Plug>(easymotion-s)";
         key = "<C-Q>";
@@ -375,6 +407,7 @@
       vim-sexp-mappings-for-regular-people
       vim-easymotion
       playground # treesitter-playground
+      nvim-nio
     ];
 
     extraConfigLua = ''
@@ -402,6 +435,14 @@
       function _lazygit_toggle()
         lazygit:toggle()
       end
+
+      -- dap
+      vim.fn.sign_define('DapBreakpoint', {
+        text='*',
+        texthl='DapBreakpointSymbol',
+        linehl='DapBreakpointSymbol',
+        numhl='DapBreakpointSymbol'
+      })
 
       -- ties neovim default clipboard to system clipboard
       vim.api.nvim_set_option("clipboard", "unnamed")
