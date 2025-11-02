@@ -146,7 +146,18 @@
             filtered_items = {
               hide_dotfiles = false;
               hide_gitignored = true;
-              visible = true;
+              visible = false;
+            };
+            find_command = "fd";
+            find_args = {
+              fd = [
+                "--exclude" ".git"
+                "--exclude" ".lsp"
+                "--exclude" ".cargo"
+                "--exclude" ".node_modules"
+                "--exclude" ".clj-kondo"
+                "--exclude" "target"
+              ];
             };
             # use_libuv_file_watcher = true;
           };

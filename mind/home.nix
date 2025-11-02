@@ -15,19 +15,21 @@ in
 
   home.packages = with pkgs; [
     # Development
+    babashka
     bazelisk
+    bun
     clj-kondo
     cljfmt
     clojure
-    babashka
-    rlwrap
     devenv
+    evcxr
+    nodejs_24
     pinentry-curses
     podman
     pre-commit
     protobuf
+    rlwrap
     rustup
-    evcxr
     zulu24
 
     # Tools
@@ -38,9 +40,7 @@ in
     texliveFull
     inetutils
     websocat
-
-    nodejs_24
-    bun
+    fd
   ];
 
   # Let Home Manager install and manage itself.
