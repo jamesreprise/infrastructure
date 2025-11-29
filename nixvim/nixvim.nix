@@ -145,7 +145,7 @@
             };
             filtered_items = {
               hide_dotfiles = false;
-              hide_gitignored = true;
+              hide_gitignored = false;
               visible = false;
             };
             find_command = "fd";
@@ -262,6 +262,7 @@
           java_language_server.enable = true;
           jsonnet_ls.enable = true;
           jsonls.enable = true;
+          eslint.enable = true;
         };
       };
 
