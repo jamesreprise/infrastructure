@@ -68,6 +68,7 @@ in
       "spotify"
       "whatsapp"
       "element"
+      "rectangle"
     ];
   };
 }
