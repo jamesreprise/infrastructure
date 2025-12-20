@@ -5,6 +5,8 @@
     viAlias = true;
     vimAlias = true;
 
+    nixpkgs.config.allowUnfree = true;
+
     autoCmd = [
       {
         event = [ "BufRead" "BufNewFile" ];
@@ -58,26 +60,37 @@
 
     # TODO: Move plugins out into their own files - allows for grouping with keymaps
     plugins = {
+      # claude-code = {
+      #   enable = true;
+      #   settings = {
+      #     refresh = {
+      #       enable = true;
+      #     };
+      #     window = {
+      #       position = "vertical";
+      #     };
+      #   };
+      # };
       web-devicons.enable = true;
       treesitter = {
         enable = true;
         settings.highlight.enable = true;
       };
       treesitter-context.enable = true;
-      treesitter-refactor = {
-        enable = true;
-        settings = {
-          highlight_definitions = {
-            enable = true;
-            clear_on_cursor_move = true;
-          };
-          highlight_current_scope = {
-            enable = true;
-            disable = ["nix" "typescript" "cpp"];
-          };
-          navigation.enable = true;
-        };
-      };
+      # treesitter-refactor = {
+      #   enable = true;
+      #   settings = {
+      #     highlight_definitions = {
+      #       enable = true;
+      #       clear_on_cursor_move = true;
+      #     };
+      #     highlight_current_scope = {
+      #       enable = true;
+      #       disable = ["nix" "typescript" "cpp"];
+      #     };
+      #     navigation.enable = true;
+      #   };
+      # };
       cmp-buffer.enable = true;
       cmp-path.enable = true;
       cmp_luasnip.enable = true;
@@ -290,6 +303,7 @@
       };
 
       leap.enable = true;
+      snacks.enable = true;
     };
 
     keymaps = [
@@ -433,6 +447,11 @@
         action = "<Plug>(leap-anywhere)";
         key = "s";
       }
+      {
+        mode = ["n"];
+        action = "<cmd>ClaudeCode<CR>";
+        key = "<C-c>";
+      }
     ];
 
     extraPlugins = with pkgs.vimPlugins; [
@@ -440,6 +459,7 @@
       vim-sexp
       vim-sexp-mappings-for-regular-people
       nvim-nio
+      claudecode-nvim
     ];
 
     extraConfigLua = ''
@@ -475,6 +495,9 @@
         linehl='DapBreakpointSymbol',
         numhl='DapBreakpointSymbol'
       })
+
+      -- claudecode-nvim
+      require("claudecode").setup({})
 
       -- ties neovim default clipboard to system clipboard
       vim.api.nvim_set_option("clipboard", "unnamed")
