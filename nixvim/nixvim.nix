@@ -5,6 +5,8 @@
     viAlias = true;
     vimAlias = true;
 
+    nixpkgs.config.allowUnfree = true;
+
     autoCmd = [
       {
         event = [ "BufRead" "BufNewFile" ];
@@ -58,6 +60,17 @@
 
     # TODO: Move plugins out into their own files - allows for grouping with keymaps
     plugins = {
+      claude-code = {
+        enable = true;
+        settings = {
+          refresh = {
+            enable = true;
+          };
+          window = {
+            position = "vertical";
+          };
+        };
+      };
       web-devicons.enable = true;
       treesitter = {
         enable = true;
@@ -425,6 +438,11 @@
         mode = ["n"];
         action = "<C-w>l";
         key = "<C-l>";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>ClaudeCode<CR>";
+        key = "<C-c>";
       }
     ];
 
