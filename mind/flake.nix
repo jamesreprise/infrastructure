@@ -30,23 +30,24 @@
     };
   };
 
-  outputs = { self, nix-darwin, nix-homebrew, nixpkgs, nixvim, homebrew-core, homebrew-cask, home-manager }:
+  outputs = { self, nix-darwin, nix-homebrew, nixpkgs, nixvim, homebrew-core, homebrew-cask, home-manager }@inputs:
   let
-    name = "james";
+    username = "james";
     fullName = "James Williams";
     email = "james@berserksystems.com";
-    system = "MIND";
+    systemName = "MIND";
     options = import ./options.nix { 
-      defaultUsername = name;
+      defaultUsername = username;
       defaultFullName = fullName;
       defaultEmail = email;
     };
-    systemConfiguration = import ./system.nix { flake = self; system = system; };
+
+    systemConfiguration = import ./system.nix { flake = self; systemName = systemName; };
   in
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#MIND
-    darwinConfigurations."${system}" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."${systemName}" = nix-darwin.lib.darwinSystem {
       modules = [
         options
 
@@ -57,7 +58,7 @@
             enable = true;
             enableRosetta = true;
             
-            user = name;
+            user = username;
             
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
@@ -71,7 +72,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users."${name}" = import ./home.nix {
+            users."${username}" = import ./home.nix {
               flake = self;
               nixvim = import ./nixvim.nix;
             };
@@ -81,6 +82,6 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."${system}".pkgs;
+    darwinPackages = self.darwinConfigurations."${systemName}".pkgs;
   };
 }

@@ -1,4 +1,4 @@
-{ flake, system }:
+{ flake, systemName }:
 { pkgs, config, ... }:
 let
   name = config.username;
@@ -15,7 +15,7 @@ in
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
-  # nix.package = pkgs.nix;
+  nixpkgs.config.allowUnfree = true;
 
   nix.settings = {
     # Necessary for using flakes on this system.
@@ -32,7 +32,7 @@ in
   programs.fish.enable = true;
   programs.zsh.enable = true;
 
-  networking.hostName = system;
+  networking.hostName = systemName;
 
   # Otherwise our home points to /var/empty (https://github.com/LnL7/nix-darwin/issues/423)
   users.users.${name}.home = "/Users/${name}";
