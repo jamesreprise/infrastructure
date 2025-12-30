@@ -41,6 +41,8 @@ in
     inetutils
     websocat
     fd
+
+    mkcert
   ];
 
   # Let Home Manager install and manage itself.
