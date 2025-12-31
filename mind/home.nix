@@ -42,9 +42,9 @@ in
     websocat
     socat
     fd
-
     mkcert
     nss_latest
+    qemu
   ];
 
   # Let Home Manager install and manage itself.
