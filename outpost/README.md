@@ -6,3 +6,16 @@
 5. `qemu-img convert -O qcow2 -o compat=0.10 latest-nixos-minimal-x86_64-linux.raw latest-nixos-minimal-x86_64-linux-resized.qcow2`
 
 As I understand it step 2 is unnecessary, but repeating it verbatim as it worked for me.
+
+## Installing & Configuring NixOS
+https://nixos.wiki/wiki/NixOS_Installation_Guide
+
+On certain providers I found it necessary to:
+* attach a secondary block device
+* install nixos onto this secondary block device
+* reboot onto the secondary block device
+* wipe the primary block device
+* install nixos on the primary block device
+* detatch & delete the secondary block device
+
+to get around problems where installing on the initial disk which played host to the iso was not possible.
