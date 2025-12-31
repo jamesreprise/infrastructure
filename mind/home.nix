@@ -33,6 +33,7 @@ in
     zulu24
 
     # Tools
+    age
     atuin
     nmap
     magic-wormhole
