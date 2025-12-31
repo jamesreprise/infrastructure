@@ -35,17 +35,18 @@ in
     # Tools
     age
     atuin
-    nmap
+    fd
+    inetutils
     magic-wormhole
     mediainfo
-    texliveFull
-    inetutils
-    websocat
-    socat
-    fd
     mkcert
+    nmap
     nss_latest
     qemu
+    socat
+    texliveFull
+    websocat
+    wireguard-tools
   ];
 
   # Let Home Manager install and manage itself.
