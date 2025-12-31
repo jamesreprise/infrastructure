@@ -40,9 +40,11 @@ in
     texliveFull
     inetutils
     websocat
+    socat
     fd
 
     mkcert
+    nss_latest
   ];
 
   # Let Home Manager install and manage itself.
