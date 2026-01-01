@@ -54,10 +54,20 @@
         RouteTable = "main";
         FirewallMark = 42;
       };
-      wireguardPeers = [{
-        PublicKey = "OwB+PBUS0ckNV8eD2o8ChlM1ZLnuGSGqtf5nzReP6zM=";
-        AllowedIPs = [ "10.128.64.2/32" ];
-      }];
+      wireguardPeers = [
+        {
+          PublicKey = "...";
+          AllowedIPs = [ "10.128.64.2/32" ];
+        }
+        {
+          PublicKey = "...";
+          AllowedIPs = [ "10.128.64.3/32" ];
+        }
+        {
+          PublicKey = "...";
+          AllowedIPs = [ "10.128.64.16/32" ];
+        }
+      ];
     };
   };
 }
