@@ -4,6 +4,7 @@
     [
       ./hardware-configuration.nix
       ./wireguard.nix
+      ./foundationdb.nix
       <agenix/modules/age.nix>
     ];
 
@@ -22,6 +23,9 @@
     "nixos-config=/etc/nixos/configuration.nix"
     "agenix=https://github.com/ryantm/agenix/archive/main.tar.gz"
   ];
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
@@ -41,11 +45,22 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Tools
     vim
     curl
+    htop
+    git
     (callPackage <agenix/pkgs/agenix.nix> {})
+    babashka
+    tcpdump
+    # Development
+    rustup
+    gcc
+    clang
+    llvmPackages.libclang
+    llvmPackages.libcxxClang
+    pkg-config
   ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
