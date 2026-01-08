@@ -338,6 +338,16 @@
       }
       {
         mode = ["n"];
+        action = "<cmd>Gitsigns preview_hunk_inline<CR>";
+        key = "<leader>hp";
+      }
+      {
+        mode = ["n"];
+        action = "<cmd>Gitsigns toggle_deleted<CR><cmd>Gitsigns toggle_linehl<CR><cmd>Gitsigns toggle_numhl<CR><cmd>Gitsigns toggle_word_diff<CR>";
+        key = "<C-p>";
+      }
+      {
+        mode = ["n"];
         action = "<cmd>lua vim.diagnostic.open_float(0, {scope='line'})<CR>";
         key = "<leader>e";
       }
