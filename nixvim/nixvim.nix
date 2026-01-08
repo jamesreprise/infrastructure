@@ -211,7 +211,12 @@
       gitsigns.enable = true;
       lightline = {
         enable = true;
-        settings.colorscheme = "wombat";
+        settings = {
+          colorscheme = "wombat";
+          active = {
+            left = [["mode" "paste"] ["readonly" "relativepath" "modified"]];
+          };
+        };
       };
 
       notify = {
