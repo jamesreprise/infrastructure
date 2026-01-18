@@ -30,7 +30,7 @@ in
     protobuf
     rlwrap
     rustup
-    zulu24
+    javaPackages.compiler.temurin-bin.jdk-25
 
     # Tools
     age
