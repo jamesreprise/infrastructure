@@ -288,6 +288,8 @@
           clojure = [ "clj-kondo" ];
         };
       };
+
+      leap.enable = true;
     };
 
     keymaps = [
@@ -402,11 +404,6 @@
         key = "<leader>ro";
       }
       {
-        mode = ["i" "n"];
-        action = "<Plug>(easymotion-s)";
-        key = "<C-Q>";
-      }
-      {
         mode = ["n"];
         action = "<C-w>h";
         key = "<C-h>";
@@ -432,7 +429,6 @@
       vim-surround
       vim-sexp
       vim-sexp-mappings-for-regular-people
-      vim-easymotion
       playground # treesitter-playground
       nvim-nio
     ];
