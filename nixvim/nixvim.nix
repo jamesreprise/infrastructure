@@ -439,7 +439,6 @@
       vim-surround
       vim-sexp
       vim-sexp-mappings-for-regular-people
-      playground # treesitter-playground
       nvim-nio
     ];
 
