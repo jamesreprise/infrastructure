@@ -423,6 +423,16 @@
         action = "<C-w>l";
         key = "<C-l>";
       }
+      {
+        mode = ["n" "x" "i" "o"];
+        action = "<Plug>(leap-anywhere)";
+        key = "<C-q>";
+      }
+      {
+        mode = ["n" "x" "o"];
+        action = "<Plug>(leap-anywhere)";
+        key = "s";
+      }
     ];
 
     extraPlugins = with pkgs.vimPlugins; [
