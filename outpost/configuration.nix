@@ -2,10 +2,12 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
-      ./wireguard.nix
-      ./foundationdb.nix
       <agenix/modules/age.nix>
+      ./hardware-configuration.nix
+      ./services/acme.nix
+      ./services/forgejo.nix
+      ./services/foundationdb.nix
+      ./services/wireguard.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -35,13 +37,13 @@
   users.users.james = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBAe6xY4upI5IiWbLG6AJ17dJ4AqcDJ60mB+AauJjoEJ"];
+    openssh.authorizedKeys.keys = ["ssh-ed25519 ..."];
     packages = with pkgs; [
       tree
     ];
   };
   users.users.root = {
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBAe6xY4upI5IiWbLG6AJ17dJ4AqcDJ60mB+AauJjoEJ"];
+    openssh.authorizedKeys.keys = ["ssh-ed25519 ..."];
   };
 
   environment.systemPackages = with pkgs; [

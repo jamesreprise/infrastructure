@@ -15,7 +15,7 @@
 
 {
   age.secrets.wireguard = {
-    file = ./secrets/wireguard.private-key.age;
+    file = ../secrets/wireguard.private-key.age;
     mode = "640";
     owner = "systemd-network";
     group = "systemd-network";
