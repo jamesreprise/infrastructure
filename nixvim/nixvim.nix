@@ -64,20 +64,6 @@
         settings.highlight.enable = true;
       };
       treesitter-context.enable = true;
-      treesitter-refactor = {
-        enable = true;
-        settings = {
-          highlight_definitions = {
-            enable = true;
-            clear_on_cursor_move = true;
-          };
-          highlight_current_scope = {
-            enable = true;
-            disable = ["nix" "typescript" "cpp"];
-          };
-          navigation.enable = true;
-        };
-      };
       cmp-buffer.enable = true;
       cmp-path.enable = true;
       cmp_luasnip.enable = true;

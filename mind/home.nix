@@ -56,7 +56,7 @@ in
   #       it at a code level (perhaps via overrides?), which we ought to.
   home.file.".config/clojure-lsp/config.edn".text = ''
   {:dependency-scheme "zipfile"
-   :java {:jdk-source-uri "file://${pkgs.zulu24}/lib/src.zip"}}
+   :java {:jdk-source-uri "file://${pkgs.zulu25}/lib/src.zip"}}
   '';
 
   home.file.".hushlogin".text = "";
