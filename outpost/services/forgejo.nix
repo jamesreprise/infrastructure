@@ -19,9 +19,13 @@ in {
     package = pkgs.forgejo;
     settings = {
       server = {
-        HTTP_PORT = forgejoHttpPort;
-        SSH_PORT = forgejoSshPort;
         DOMAIN = domainName;
+
+        HTTP_PORT = forgejoHttpPort;
+
+        START_SSH_SERVER = true;
+        SSH_PORT = forgejoSshPort;
+        SSH_LISTEN_PORT = forgejoSshPort;
 
         ROOT_URL = "https://${domainName}";
       };
