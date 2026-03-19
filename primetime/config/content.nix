@@ -42,11 +42,11 @@
 
   # Radarr
   services.radarr.enable = true;
-  users.users."${config.services.radarr.user}".extraGroups = [ "deluge" "unpackerr" ];
+  users.users.${config.services.radarr.user}.extraGroups = [ "deluge" "unpackerr" ];
 
   # Sonarr
   services.sonarr.enable = true;
-  users.users."${config.services.sonarr.user}".extraGroups = [ "deluge" "unpackerr" ];
+  users.users.${config.services.sonarr.user}.extraGroups = [ "deluge" "unpackerr" ];
 
   # Unpackerr
   environment.systemPackages = [ pkgs.unpackerr ];

@@ -47,7 +47,7 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#MIND
-    darwinConfigurations."${systemName}" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.${systemName} = nix-darwin.lib.darwinSystem {
       modules = [
         options
 
@@ -72,7 +72,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users."${username}" = import ./home.nix {
+            users.${username} = import ./home.nix {
               flake = self;
               nixvim = import ./nixvim.nix;
             };
@@ -82,6 +82,6 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."${systemName}".pkgs;
+    darwinPackages = self.darwinConfigurations.${systemName}.pkgs;
   };
 }
