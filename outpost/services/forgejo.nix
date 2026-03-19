@@ -1,35 +1,30 @@
-{ config, pkgs, ...}:
+{ pkgs, ...}:
 
 let
   domainName = "example";
+  forgejoHttpPort = 3000;
+  forgejoSshPort = 2222;
 in {
+  services.nginx.virtualHosts."git" = {
+    enableACME = true;
+    forceSSL = true;
+    serverName = "git.${domainName}";
+    locations."/" = {
+      proxyPass = "http://localhost:${forgejoHttpPort}";
+    };
+  };
+
   services.forgejo = {
     enable = true;
     package = pkgs.forgejo;
     settings = {
       server = {
-        PROTOCOL = "https";
-        SSH_PORT = 2222;
+        HTTP_PORT = forgejoHttpPort;
+        SSH_PORT = forgejoSshPort;
         DOMAIN = domainName;
-
-        ROOT_URL = "${config.services.forgejo.settings.server.PROTOCOL}://${domainName}:${builtins.toString config.services.forgejo.settings.server.HTTP_PORT}";
-
-        CERT_FILE = "${config.security.acme.certs.${domainName}.directory}/fullchain.pem";
-        KEY_FILE = "${config.security.acme.certs.${domainName}.directory}/key.pem";
       };
     };
   };
 
   environment.systemPackages = with pkgs; [ forgejo-cli ];
-
-  networking.firewall = {
-    allowedTCPPorts = [ config.services.forgejo.settings.server.HTTP_PORT ];
-  };
-
-  security.acme = {
-    certs."${domainName}" = {
-      listenHTTP = ":80";
-      group = config.services.forgejo.group;
-    };
-  };
 }

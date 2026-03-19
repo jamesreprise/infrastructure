@@ -1,4 +1,5 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
+
 {
   imports =
     [
@@ -8,6 +9,7 @@
       ./services/forgejo.nix
       ./services/foundationdb.nix
       ./services/wireguard.nix
+      ./services/nginx.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

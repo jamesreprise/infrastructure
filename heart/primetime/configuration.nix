@@ -2,6 +2,7 @@
 
 let 
   rootSshPubKeys = ["..."];
+  hostName = "primetime";
 in {
   imports = [
     "${modulesPath}/virtualisation/incus-virtual-machine.nix"
@@ -11,12 +12,10 @@ in {
   ];
 
   networking = {
-    hostName = "primetime";
+    hostName = hostName;
     dhcpcd.enable = false;
     useDHCP = false;
     useHostResolvConf = false;
-    firewall.allowedUDPPorts = [ 5201 ];
-    firewall.allowedTCPPorts = [ 5201 ];
   };
 
   systemd.network = {
