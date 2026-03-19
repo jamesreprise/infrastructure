@@ -10,7 +10,7 @@ in {
     forceSSL = true;
     serverName = domainName;
     locations."/" = {
-      proxyPass = "http://localhost:${forgejoHttpPort}";
+      proxyPass = "http://localhost:${toString forgejoHttpPort}";
     };
   };
 
@@ -22,6 +22,8 @@ in {
         HTTP_PORT = forgejoHttpPort;
         SSH_PORT = forgejoSshPort;
         DOMAIN = domainName;
+
+        ROOT_URL = "https://${domainName}";
       };
     };
   };
