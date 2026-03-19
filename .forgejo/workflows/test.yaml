@@ -1,0 +1,9 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    steps:
+      - run: echo "OK"
