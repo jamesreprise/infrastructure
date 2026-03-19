@@ -39,6 +39,9 @@ in {
 
         ROOT_URL = "https://${domainName}";
       };
+      service = {
+        DISABLE_REGISTRATION = true;
+      };
       actions = {
         ENABLED = true;
         DEFAULT_ACTIONS_URL = "https://data.forgejo.org";
