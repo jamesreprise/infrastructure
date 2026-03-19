@@ -27,4 +27,7 @@ in {
       };
     };
   };
+
+  networking.firewall.allowedTCPPorts = [forgejoSshPort];
+  networking.firewall.allowedUDPPorts = [forgejoSshPort];
 }
