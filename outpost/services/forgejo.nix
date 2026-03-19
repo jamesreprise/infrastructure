@@ -5,10 +5,10 @@ let
   forgejoHttpPort = 3000;
   forgejoSshPort = 2222;
 in {
-  services.nginx.virtualHosts."git" = {
+  services.nginx.virtualHosts."${domainName}" = {
     enableACME = true;
     forceSSL = true;
-    serverName = "git.${domainName}";
+    serverName = domainName;
     locations."/" = {
       proxyPass = "http://localhost:${forgejoHttpPort}";
     };
@@ -25,6 +25,4 @@ in {
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [ forgejo-cli ];
 }
