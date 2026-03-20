@@ -5,6 +5,6 @@ on:
 
 jobs:
   test:
-    runs-on: docker
+    runs-on: alpine
     steps:
       - run: echo "OK"

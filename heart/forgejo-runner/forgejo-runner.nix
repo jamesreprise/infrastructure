@@ -29,10 +29,8 @@ in {
       # the workflow. In the case of docker/podman, <default-image> dictates what
       # image will be used when a job specifies 'runs-on: <label-name>' and no
       # container in particular.
-      #
-      # Jobs can also specify 'runs-on: <label-type>', to be even more vague.
       labels = [
-        "ubuntu-22.04:docker://node:16-bullseye"
+        "alpine:docker://alpine:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659"
       ];
     };
   };
