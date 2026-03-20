@@ -12,12 +12,25 @@ in {
 
   services.gitea-actions-runner = {
     package = pkgs.forgejo-runner;
-    instances.heart-1 = {
+    instances.heart1 = {
       enable = true;
-      name = "heart-1";
+      name = "heart1";
       url = url;
       # file should be in format TOKEN=<secret>, since it's EnvironmentFile for systemd
       tokenFile = config.age.secrets.forgejo-runner-token.path;
+      # A label has the following structure:
+      # <label-name>:<label-type>://<default-image>
+      #
+      # The label name is a unique string that identifies the label. It is the part
+      # that is specified in the runs-on field of workflows to choose which runners
+      # the workflow can be executed on.
+      #
+      # The label type determines what containerization system will be used to run
+      # the workflow. In the case of docker/podman, <default-image> dictates what
+      # image will be used when a job specifies 'runs-on: <label-name>' and no
+      # container in particular.
+      #
+      # Jobs can also specify 'runs-on: <label-type>', to be even more vague.
       labels = [
         "ubuntu-22.04:docker://node:16-bullseye"
       ];
