@@ -30,7 +30,7 @@ in {
       # image will be used when a job specifies 'runs-on: <label-name>' and no
       # container in particular.
       labels = [
-        "alpine:docker://alpine:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659"
+        "alpine:docker://alpine@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659"
       ];
     };
   };
