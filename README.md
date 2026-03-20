@@ -1,14 +1,5 @@
 # Infrastructure
 Collection of machines defined with nix.
-## Machines
-### Primetime
-Content & media server.
-
-### Mind
-Development machine.
-
-## Todo
-- [ ] Create a unified configuration.
 
 ## Notes
 * We use [agenix](https://github.com/ryantm/agenix) for secret encryption.
