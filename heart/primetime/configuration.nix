@@ -9,6 +9,7 @@ in {
     # Auto-generated
     ./incus.nix
     ./content.nix
+    ./wireguard.nix
   ];
 
   networking = {

@@ -67,6 +67,10 @@
           PublicKey = "...";
           AllowedIPs = [ "10.128.64.16/32" ];
         }
+        {
+          PublicKey = "...";
+          AllowedIPs = [ "10.128.64.29/30" ];
+        }
       ];
     };
   };
