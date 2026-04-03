@@ -5,6 +5,6 @@ on:
 
 jobs:
   test:
-    runs-on: act-24.04
+    runs-on: nix
     steps:
       - run: echo "OK"
