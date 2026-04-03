@@ -14,39 +14,38 @@ in
   home.homeDirectory = "/Users/${name}";
 
   home.packages = with pkgs; [
-    # Development
+    age
+    atuin
     babashka
     bazelisk
     bun
     clj-kondo
     cljfmt
     clojure
+    crane
     devenv
     evcxr
-    nodejs_24
-    pinentry-curses
-    podman
-    pre-commit
-    protobuf
-    rlwrap
-    rustup
-    javaPackages.compiler.temurin-bin.jdk-25
-
-    # Tools
-    age
-    atuin
     fd
     inetutils
+    javaPackages.compiler.temurin-bin.jdk-25
     magic-wormhole
     mediainfo
     mkcert
     nmap
+    nodejs_24
     nss_latest
+    pinentry-curses
+    podman
+    pre-commit
+    protobuf
     qemu
+    rlwrap
+    rustup
     socat
     texliveFull
     websocat
     wireguard-tools
+    yq
   ];
 
   # Let Home Manager install and manage itself.

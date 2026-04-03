@@ -20,13 +20,10 @@ in
   nix.settings = {
     # Necessary for using flakes on this system.
     experimental-features = "nix-command flakes";
-    substituters = ["https://devenv.cachix.org"];
-    trusted-public-keys = ["devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="];
   };
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [ bazelisk ];
   environment.shells = [ pkgs.fish ];
   environment.pathsToLink = [ "/share/fish" ];
   programs.fish.enable = true;
