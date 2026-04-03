@@ -30,7 +30,7 @@ in {
       # image will be used when a job specifies 'runs-on: <label-name>' and no
       # container in particular.
       labels = [
-        "alpine:docker://alpine@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659"
+        "act-24.04:docker://ghcr.io/catthehacker/ubuntu:act-latest-20260401@sha256:ac990511aa5ce141ad95765f1426a4a3a56feac10b56d85d6a6e7a8893c4ddbe2"
       ];
       settings = {
         log.level = "info";
