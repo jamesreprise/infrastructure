@@ -46,6 +46,7 @@ in
     websocat
     wireguard-tools
     yq
+    dive
   ];
 
   # Let Home Manager install and manage itself.
