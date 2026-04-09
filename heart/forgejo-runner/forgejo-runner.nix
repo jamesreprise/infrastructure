@@ -31,6 +31,8 @@ in {
       # container in particular.
       labels = [
         "nix:docker://registry.hub.docker.com/nixos/nix:2.34.4@sha256:446804c0005967290a3ef8c70f7f7739289cea43e365c3fc10ad1427f85fcd5c"
+        "ubuntu-24.04:docker://ghcr.io/catthehacker/ubuntu:runner-24.04@sha256:8b8b937266610507a6bfbd7c53aefa5ee38b9c1562e4b08e516c0afe8be09f51"
+        "bazel:docker://git.berserk.dev/berserksystems/bazelisk@sha256:aa719ca27c3940a4855910c78fe874b516ff998e0b6235e9099ef6d9f4814319"
       ];
       settings = {
         log.level = "info";
