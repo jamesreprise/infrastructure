@@ -36,6 +36,11 @@ in {
       ];
       settings = {
         log.level = "info";
+        cache = {
+          enabled = true;
+          host = "host.containers.internal";
+        };
+        container.network = "host";
       };
     };
   };
