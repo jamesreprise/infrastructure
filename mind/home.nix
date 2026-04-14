@@ -42,7 +42,6 @@ in
     rlwrap
     rustup
     socat
-    texliveFull
     websocat
     wireguard-tools
     yq
