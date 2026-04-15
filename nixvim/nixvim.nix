@@ -380,21 +380,21 @@
         action = "<cmd>lua require('dap').repl.open()<CR>";
         key = "<leader>dr";
       }
-      {
-        mode = ["n"];
-        action = "<cmd>RustLsp debug<CR>";
-        key = "<leader>rD";
-      }
-      {
-        mode = ["n"];
-        action = "<cmd>RustLsp debuggables<CR>";
-        key = "<leader>rd";
-      }
-      {
-        mode = ["n"];
-        action = "<cmd>RustLsp openDocs<CR>";
-        key = "<leader>ro";
-      }
+      # {
+      #   mode = ["n"];
+      #   action = "<cmd>RustLsp debug<CR>";
+      #   key = "<leader>rD";
+      # }
+      # {
+      #   mode = ["n"];
+      #   action = "<cmd>RustLsp debuggables<CR>";
+      #   key = "<leader>rd";
+      # }
+      # {
+      #   mode = ["n"];
+      #   action = "<cmd>RustLsp openDocs<CR>";
+      #   key = "<leader>ro";
+      # }
       {
         mode = ["n"];
         action = "<C-w>h";
