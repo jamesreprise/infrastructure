@@ -219,12 +219,12 @@
       conjure.enable = true;
       zig.enable = true;
 
-      rustaceanvim.enable = true;
       dap.enable = true;
       dap-ui.enable = true;
 
       lsp = {
         enable = true;
+        inlayHints = true;
         keymaps = {
           lspBuf = {
             K = "hover";
@@ -239,6 +239,12 @@
           gopls.enable = true;
           nixd.enable = true;
           protols.enable = true;
+          rust_analyzer = {
+            enable = true;
+            activate = true;
+            installRustc = false;
+            installCargo = false;
+          };
           ts_ls.enable = true;
           svelte.enable = true;
           tailwindcss.enable = true;

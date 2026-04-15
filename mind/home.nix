@@ -150,6 +150,7 @@ in
     };
     signing = {
       signByDefault = true;
+      format = "openpgp";
       key = null;
     };
   };
