@@ -3,7 +3,7 @@
 let
   domainName = "parade.berserk.dev";
   port = 4430;
-in{
+in {
   services.foundationdb = {
     enable = true;
     package = pkgs.foundationdb;
@@ -17,5 +17,4 @@ in{
       proxyPass = "https://localhost:${toString port}";
     };
   };
-
 }
