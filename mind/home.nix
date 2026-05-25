@@ -101,6 +101,9 @@ in
       # Required for pinentry-curses & GPG
       set -x GPG_TTY (tty)
 
+      # Required for libfdb_c-consuming in clang/cc
+      set -xa LIBRARY_PATH /usr/local/lib
+
       # Add cargo binaries to path
       fish_add_path ~/.cargo/bin
     '';
