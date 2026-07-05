@@ -46,6 +46,9 @@ in {
         ENABLED = true;
         DEFAULT_ACTIONS_URL = "https://data.forgejo.org";
       };
+      session = {
+        SESSION_LIFE_TIME = 60 * 60 * 24 * 365;
+      };
     };
   };
 
