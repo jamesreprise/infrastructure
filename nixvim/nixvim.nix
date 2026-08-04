@@ -242,7 +242,6 @@
           protols.enable = true;
           rust_analyzer = {
             enable = true;
-            activate = true;
             installRustc = false;
             installCargo = false;
           };
