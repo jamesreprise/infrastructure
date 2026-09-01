@@ -24,9 +24,11 @@ in
     clojure
     crane
     devenv
+    dive
     evcxr
     fd
     inetutils
+    ipcalc
     javaPackages.compiler.temurin-bin.jdk-25
     magic-wormhole
     mediainfo
@@ -45,7 +47,6 @@ in
     websocat
     wireguard-tools
     yq
-    dive
   ];
 
   # Let Home Manager install and manage itself.
