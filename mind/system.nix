@@ -56,6 +56,9 @@ in
 
   homebrew = {
     enable = true;
+    brews = [
+      "ibazel"
+    ];
     casks = [
       "iterm2"
       "firefox"
