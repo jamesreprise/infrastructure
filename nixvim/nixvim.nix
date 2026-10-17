@@ -146,7 +146,7 @@
                 "--exclude" "target"
               ];
             };
-            # use_libuv_file_watcher = true;
+            use_libuv_file_watcher = true;
           };
 
           default_component_configs = {
