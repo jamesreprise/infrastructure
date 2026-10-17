@@ -15,10 +15,8 @@ in
 
   home.packages = with pkgs; [
     age
-    atuin
     babashka
     bazelisk
-    bun
     clj-kondo
     cljfmt
     clojure
