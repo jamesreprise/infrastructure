@@ -5,13 +5,7 @@
     viAlias = true;
     vimAlias = true;
 
-    autoCmd = [
-      {
-        event = [ "BufRead" "BufNewFile" ];
-        pattern = [ "*.bb" ];
-        command = "set filetype=clojure";
-      }
-    ];
+    filetype.extension.bb = "clojure";
 
     globals = {
       mapleader = ";";
@@ -73,10 +67,14 @@
       cmp-nvim-lua.enable = true;
       cmp = {
         enable = true;
-        autoEnableSources = true;
         settings = {
           sources = [
             { name = "nvim_lsp"; }
+            { name = "nvim_lsp_signature_help"; }
+            { name = "luasnip"; }
+            { name = "buffer"; }
+            { name = "path"; }
+            { name = "nvim_lua"; }
           ];
           mapping = {
             "<C-u>" = "cmp.mapping.scroll_docs(-4)";
