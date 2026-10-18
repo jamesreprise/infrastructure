@@ -1,6 +1,7 @@
 {
 "Profiles": [
 {
+  "Set Local Environment Vars" : 0,
   "Working Directory" : "\/Users\/james",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -19,7 +20,7 @@
     "Green Component" : 0.74117648601531982
   },
   "Use Italic Font" : true,
-  "HotKey Characters" : "`",
+  "HotKey Characters" : "§",
   "Foreground Color" : {
     "Red Component" : 0.90980392694473267,
     "Color Space" : "Calibrated",
@@ -94,20 +95,20 @@
   },
   "Unlimited Scrollback" : true,
   "Custom Command" : "No",
-  "HotKey Key Code" : 50,
+  "HotKey Key Code" : 10,
   "Keyboard Map" : {
-    "0xf702-0x280000-0x7b" : {
-      "Version" : 2,
-      "Apply Mode" : 0,
-      "Action" : 10,
-      "Text" : "b",
-      "Escaping" : 2
-    },
-    "0xf703-0x280000-0x7c" : {
+    "0xf703-0x280000-0x7c-0x1" : {
       "Version" : 2,
       "Apply Mode" : 0,
       "Action" : 10,
       "Text" : "f",
+      "Escaping" : 2
+    },
+    "0xf702-0x280000-0x7b-0x1" : {
+      "Version" : 2,
+      "Apply Mode" : 0,
+      "Action" : 10,
+      "Text" : "b",
       "Escaping" : 2
     }
   },
@@ -177,14 +178,6 @@
   "Name" : "Hotkey - Quake",
   "Blinking Cursor" : false,
   "Guid" : "DA838C30-38B4-4800-B9DF-6AFBE99C1D0C",
-  "Idle Code" : 0,
-  "Ansi 10 Color" : {
-    "Red Component" : 0.72156864404678345,
-    "Color Space" : "Calibrated",
-    "Blue Component" : 0.14901961386203766,
-    "Alpha Component" : 1,
-    "Green Component" : 0.73333334922790527
-  },
   "Ansi 8 Color" : {
     "Red Component" : 0.57254904508590698,
     "Color Space" : "Calibrated",
@@ -192,6 +185,14 @@
     "Alpha Component" : 1,
     "Green Component" : 0.51372551918029785
   },
+  "Ansi 10 Color" : {
+    "Red Component" : 0.72156864404678345,
+    "Color Space" : "Calibrated",
+    "Blue Component" : 0.14901961386203766,
+    "Alpha Component" : 1,
+    "Green Component" : 0.73333334922790527
+  },
+  "Idle Code" : 0,
   "Badge Color" : {
     "Red Component" : 1,
     "Color Space" : "Calibrated",
@@ -225,7 +226,7 @@
   "Horizontal Spacing" : 1,
   "Option Key Sends" : 2,
   "HotKey Window Animates" : false,
-  "HotKey Modifier Flags" : 1179648,
+  "HotKey Modifier Flags" : 1048576,
   "Ansi 15 Color" : {
     "Red Component" : 0.92156863212585449,
     "Color Space" : "Calibrated",
@@ -250,7 +251,7 @@
     "Green Component" : 0.10980392247438431
   },
   "Screen" : -2,
-  "HotKey Characters Ignoring Modifiers" : "~",
+  "HotKey Characters Ignoring Modifiers" : "§",
   "Bound Hosts" : [
 
   ],
@@ -353,6 +354,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.60000002384185791
   },
+  "Icon" : 1,
   "Use Non-ASCII Font" : false,
   "Link Color" : {
     "Red Component" : 0.7450980544090271,
@@ -374,18 +376,18 @@
   "Custom Command" : "No",
   "HotKey Key Code" : 50,
   "Keyboard Map" : {
-    "0xf702-0x280000-0x7b" : {
-      "Version" : 2,
-      "Apply Mode" : 0,
-      "Action" : 10,
-      "Text" : "b",
-      "Escaping" : 2
-    },
-    "0xf703-0x280000-0x7c" : {
+    "0xf703-0x280000-0x7c-0x1" : {
       "Version" : 2,
       "Apply Mode" : 0,
       "Action" : 10,
       "Text" : "f",
+      "Escaping" : 2
+    },
+    "0xf702-0x280000-0x7b-0x1" : {
+      "Version" : 2,
+      "Apply Mode" : 0,
+      "Action" : 10,
+      "Text" : "b",
       "Escaping" : 2
     }
   },
@@ -542,10 +544,10 @@
     "Alpha Component" : 1,
     "Green Component" : 0.52549022436141968
   },
-  "Columns" : 80,
   "HotKey Alternate Shortcuts" : [
 
   ],
+  "Columns" : 80,
   "Visual Bell" : true,
   "Custom Directory" : "No",
   "Ansi 5 Color" : {
