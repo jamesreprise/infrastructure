@@ -59,7 +59,7 @@
 
     # TODO: Move plugins out into their own files - allows for grouping with keymaps
     plugins = {
-      web-devicons.enable = true;
+      web-devicons.enable = false;
       treesitter = {
         enable = true;
         settings.highlight.enable = true;
