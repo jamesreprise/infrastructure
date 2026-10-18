@@ -57,6 +57,14 @@ in
    :java {:jdk-source-uri "file://${pkgs.zulu25}/lib/src.zip"}}
   '';
 
+  home.file.".config/neovide/config.toml".text = ''
+  chdir = "/Users/${name}/Developer"
+  tabs = true
+  system-native-tabs = true
+  system-tab-prev-hotkey = "cmd+shift+["
+  system-tab-next-hotkey = "cmd+shift+]"
+  '';
+
   home.file.".hushlogin".text = "";
 
   programs.fish = {
