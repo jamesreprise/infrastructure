@@ -101,7 +101,20 @@
 
       lazygit.enable = true;
 
-      toggleterm.enable = true;
+      toggleterm = {
+        enable = true;
+        settings = {
+          size = ''
+            function(term)
+              if term.direction == "horizontal" then
+                return 15
+              elseif term.direction == "vertical" then
+                return vim.o.columns * 0.4
+              end
+            end
+          '';
+        };
+      };
 
       dressing.enable = true;
 
@@ -327,13 +340,18 @@
       }
       {
         mode = ["n" "t"];
-        action = "<cmd>ToggleTerm direction=float<CR>";
+        action = "<cmd>lua _terminal_toggle()<CR>";
         key = "<C-'>";
       }
       {
         mode = ["n" "t"];
         action = "<cmd>lua _lazygit_toggle()<CR>";
         key = "<C-g>";
+      }
+      {
+        mode = ["n" "t"];
+        action = "<cmd>lua _pi_toggle()<CR>";
+        key = "<C-b>";
       }
       {
         mode = ["n"];
@@ -401,6 +419,11 @@
         key = "<C-h>";
       }
       {
+        mode = ["t"];
+        action = ''<C-\><C-n><C-w>h'';
+        key = "<C-h>";
+      }
+      {
         mode = ["n"];
         action = "<C-w>j";
         key = "<C-j>";
@@ -453,11 +476,25 @@
       -- lsp-lines
       vim.diagnostic.config({virtual_lines = true})
 
-      -- lazygit
+      --terminal
       local Terminal = require('toggleterm.terminal').Terminal
-      local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float"})
+      local term = Terminal:new({ hidden = true, direction = "float", count = 2})
+      function _terminal_toggle()
+        term:toggle()
+      end
+
+      -- lazygit
+      local TerminalLazyGit = require('toggleterm.terminal').Terminal
+      local lazygit = TerminalLazyGit:new({ cmd = "lazygit", hidden = true, direction = "float", count = 3})
       function _lazygit_toggle()
         lazygit:toggle()
+      end
+
+      -- pi
+      local TerminalPi = require('toggleterm.terminal').Terminal
+      local pi = TerminalPi:new({ cmd = "pi", hidden = true, direction = "vertical", close_on_exit = false, count = 4})
+      function _pi_toggle()
+        pi:toggle()
       end
 
       -- dap
@@ -479,5 +516,8 @@
 
       -- neovide
       vim.o.guifont = "TX-02"
+      vim.g.neovide_refresh_rate = 60
+      vim.g.neovide_refresh_rate_idle = 5
+      vim.g.neovide_no_idle = true
     '';
 }
