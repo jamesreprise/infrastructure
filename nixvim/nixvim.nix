@@ -464,10 +464,23 @@
           hash = "sha256-0J8N2WMQNKinqfFfbXFAqbw9xjXwosiAaFgnzaimP2M=";
         };
       })
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "pi-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "carderne";
+          repo = "pi-nvim";
+          rev = "b10a3cc94583cc232645f0e49533e282a3486c0d";
+          hash = "sha256-+aToqE10rq8mebxMfkf8r+aIrZpE/rdF4xdWol41lV0=";
+        };
+      })
     ];
 
     extraConfigLua = ''
-      -- hotreload: auto-reload buffers on external file changes
+      -- pi-nvim
+      require("pi-nvim").setup {
+        set_default_keymaps = false,
+      }
+      -- hotreload
       require('hotreload').setup {}
 
       -- clojure_lsp
