@@ -455,9 +455,21 @@
       vim-sexp
       vim-sexp-mappings-for-regular-people
       nvim-nio
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "hotreload.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "diogo464";
+          repo = "hotreload.nvim";
+          rev = "76f1c8bd1afaa13a22756c736478144fa38f75f8";
+          hash = "sha256-0J8N2WMQNKinqfFfbXFAqbw9xjXwosiAaFgnzaimP2M=";
+        };
+      })
     ];
 
     extraConfigLua = ''
+      -- hotreload: auto-reload buffers on external file changes
+      require('hotreload').setup {}
+
       -- clojure_lsp
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       vim.lsp.config['clojure_lsp'] = {
