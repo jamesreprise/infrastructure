@@ -81,6 +81,19 @@ in
         };
       }
     ];
+    shellInit = ''
+      # Required for libfdb_c-consuming in clang/cc
+      set -xa LIBRARY_PATH /usr/local/lib
+
+      # Add cargo binaries to path
+      fish_add_path ~/.cargo/bin
+
+      # Add homebrew binaries to path
+      fish_add_path /opt/homebrew/bin
+
+      # Required for pinentry-curses & GPG
+      set -x GPG_TTY (tty)
+    '';
     interactiveShellInit = ''
       # Gruvbox theme
       base16-gruvbox-dark-medium
@@ -96,15 +109,6 @@ in
       set -g __fish_git_prompt_showcolorhints true
       set -g __fish_git_prompt_showdirtystate true
       set -g __fish_git_prompt_showuntrackedfiles true
-
-      # Required for pinentry-curses & GPG
-      set -x GPG_TTY (tty)
-
-      # Required for libfdb_c-consuming in clang/cc
-      set -xa LIBRARY_PATH /usr/local/lib
-
-      # Add cargo binaries to path
-      fish_add_path ~/.cargo/bin
     '';
     shellAliases = {
       vi = "'nvim'";
