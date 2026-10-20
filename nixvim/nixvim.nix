@@ -193,6 +193,28 @@
         };
       };
 
+      noice = {
+        enable = true;
+        settings = {
+          routes = [{
+            filter = {
+              event = "notify";
+              find = "No information available";
+            };
+            opts = { skip = true; };
+          }];
+          lsp = {
+            documentation.opts = {
+              lang = "plaintext";
+            };
+            hover.opts = {
+              silent = true;
+            };
+          };
+        };
+      };
+      nui.enable = true;
+
       nvim-autopairs = {
         enable = true;
         settings = {
